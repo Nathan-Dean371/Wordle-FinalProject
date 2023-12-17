@@ -23,6 +23,7 @@
         <Entry
             x:Name="guessEntry"
             MaxLength="5"
+            Opacity="0"
             TextChanged="OnGuessChange"
             VerticalOptions="Center"
             WidthRequest="100" />
@@ -37,6 +38,7 @@
             RowSpacing="15"
             WidthRequest="500">
 
+            <!--#region Row 1-->
             <Frame
                 Grid.Row="0"
                 Grid.Column="0"
@@ -92,6 +94,239 @@
                     Text="{Binding Guess[4]}"
                     VerticalOptions="Center" />
             </Frame>
+            <!--#endregion-->
+
+            <!--#region Row 2-->
+            <Frame
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text=""
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="3"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Grid.Column="4"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <!--#endregion-->
+
+            <!--#region Row 3-->
+            <Frame
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <Frame
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <Frame
+                Grid.Row="2"
+                Grid.Column="2"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Frame>
+
+            <Frame
+                Grid.Row="2"
+                Grid.Column="3"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Frame>
+
+            <Frame
+                Grid.Row="2"
+                Grid.Column="4"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+            </Frame>
+
+            <!--#endregion-->
+
+            <!--#region Row 4-->
+            <Frame
+                Grid.Row="3"
+                Grid.Column="0"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="2"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="3"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Grid.Column="4"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Frame>
+            <!--#endregion-->
+
+            <!--#region Row 5-->
+            <Frame
+                Grid.Row="4"
+                Grid.Column="0"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Guess[5]}"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="4"
+                Grid.Column="1"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Guess[6]}"
+                    VerticalOptions="Center" />
+            </Frame>
+            <Frame
+                Grid.Row="4"
+                Grid.Column="2"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Guess[7]}"
+                    VerticalOptions="Center" />
+            </Frame>
+
+            <Frame
+                Grid.Row="4"
+                Grid.Column="3"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Guess[8]}"
+                    VerticalOptions="Center" />
+
+            </Frame>
+
+            <Frame
+                Grid.Row="4"
+                Grid.Column="4"
+                BackgroundColor="AntiqueWhite"
+                BorderColor="Black">
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Guess[9]}"
+                    VerticalOptions="Center" />
+            </Frame>
+            <!--#endregion-->
+
+
+
 
         </Grid>
 

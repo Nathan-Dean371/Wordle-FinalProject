@@ -10,6 +10,7 @@ public partial class Gamescreen : ContentPage
     public string chosenWord;
     private bool wordChosen;
     private string guess;
+    private Timer focusTimer;
 
     public string ChosenWord
     {
@@ -42,6 +43,9 @@ public partial class Gamescreen : ContentPage
 		BindingContext = this;
         wordChosen = false;
         chooseWord();
+
+        focusTimer = new Timer(async _ => await EntryFocus(), null, 0, 500);
+
 	}
 
     void chooseWord()
@@ -65,7 +69,22 @@ public partial class Gamescreen : ContentPage
 
     void OnGuessChange(object sender, TextChangedEventArgs e)
     {
+        Entry entry = (Entry)sender;
+        string newText = entry.Text;
+
+        string filteredText = new string(newText.Where(char.IsLetter).ToArray());  
+
+        guessEntry.Text = filteredText;
         Guess = guessEntry.Text;
+    }
+
+    private async Task EntryFocus()
+    {
+        await MainThread.InvokeOnMainThreadAsync(() =>
+        { 
+            guessEntry.Focus();
+        });
+        
     }
     
 

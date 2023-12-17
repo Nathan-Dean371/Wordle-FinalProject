@@ -27,10 +27,20 @@ public partial class MainPage : ContentPage
 
     }
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private async void Start_Button_Clicked(object sender, EventArgs e)
     {
 		await Navigation.PushAsync(new Gamescreen());
         await ReadFile();
+    }
+
+    private void Scores_Button_Clicked(object sender, EventArgs e)
+    {
+        //Navigation.PushAsync(new Scores());
+    }
+
+    private void Settings_Button_Clicked(object sender, EventArgs e)
+    {
+        //Navigation.PushAsync(new Settings());
     }
 
     private async Task<string> ReadFile()

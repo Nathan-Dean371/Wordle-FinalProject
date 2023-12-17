@@ -4,10 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid
-        Padding="10"
-        RowDefinitions="*,*,*"
-        WidthRequest="300">
+    <Grid HeightRequest="600" WidthRequest="500" RowSpacing="50">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
         <Frame Grid.Row="0" BorderColor="Transparent">
             <Image Aspect="AspectFit" Source="wordle_logo.png" />
@@ -15,11 +19,26 @@
 
         <Button
             Grid.Row="1"
-            BackgroundColor="GreenYellow"
-            Clicked="Button_Clicked"
+            BackgroundColor="Green"
+            Clicked="Start_Button_Clicked"
             FontSize="Medium"
-            HeightRequest="50"
             Text="Play" />
+
+        <Button
+            Grid.Row="2"
+            BackgroundColor="DeepSkyBlue"
+            Clicked="Scores_Button_Clicked"
+            FontSize="Medium"
+            Text="Scores" />
+
+        <Button
+            Grid.Row="3"
+            BackgroundColor="Yellow"
+            Clicked="Settings_Button_Clicked"
+            FontSize="Medium"
+            Text="Settings" />
+
+
 
 
     </Grid>
