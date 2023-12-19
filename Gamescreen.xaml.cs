@@ -20,6 +20,17 @@ public partial class Gamescreen : ContentPage
     private bool wordChosen;
     private string guess;
     private bool wordGuessed = false;
+    private bool playAgain;
+    public bool PlayAgain
+    {
+        get => playAgain;
+        set
+        {
+            playAgain = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(playAgain));
+        }
+    }
 
     private int gamesPlayed;
     public int GamesPlayed
@@ -197,6 +208,9 @@ public partial class Gamescreen : ContentPage
         if(guessCount == 5)
         {   
             GuessFeedbackString = "No more guesses";
+            UpdatePlayAgain();
+
+            WinOverlay.IsVisible = true;
 
             GamesPlayed++;
             currentStreak = 0;
@@ -222,6 +236,7 @@ public partial class Gamescreen : ContentPage
             CheckGuess(Guess);
             
             wordGuessed = true;
+            UpdatePlayAgain();
             WinOverlay.IsVisible = true;
 
             gamesWon++;
@@ -319,6 +334,7 @@ public partial class Gamescreen : ContentPage
 
     private void Settings_Menu_Clicked(object sender, EventArgs e)
     {
+        UpdatePlayAgain();
         WinOverlay.IsVisible = true;
     }
 
@@ -392,5 +408,35 @@ public partial class Gamescreen : ContentPage
         else
             WinPercentage = "0%";
 
+    }
+
+    private void PlayAgainButton_Clicked(object sender, EventArgs e)
+    {
+
+           wordGuessed = false;
+            
+            //Clear gameboard and set text to each label to ""
+            foreach (Frame frame in gameboard.Children)
+            {
+                frame.BackgroundColor = Colors.White;
+                frame.BorderColor = Colors.Grey;
+                frame.Content.RemoveBinding(Label.TextProperty);
+                frame.Content.SetValue(Label.TextProperty, "");
+                
+            }
+
+
+            guessEntry.Text = "";
+            guessCount = 0;
+           AddBindingToRow(guessCount);
+           
+           wordChosen = false;
+           chooseWord();
+           WinOverlay.IsVisible = false;
+    }
+
+    void UpdatePlayAgain()
+    {
+        PlayAgain = (wordGuessed == true || guessCount == 5);
     }
 }

@@ -526,9 +526,11 @@
                             x:Name="PlayAgainButton"
                             BackgroundColor="GreenYellow"
                             BorderColor="Transparent"
+                            Clicked="PlayAgainButton_Clicked"
                             FontSize="Small"
                             HeightRequest="10"
                             HorizontalOptions="Center"
+                            IsVisible="{Binding PlayAgain}"
                             Text="Play Again"
                             TextColor="Grey"
                             WidthRequest="150" />
