@@ -162,10 +162,13 @@ public partial class Gamescreen : ContentPage
         }
         if (Guess == ChosenWord)
         {
-             wordGuessed = true;
+            CheckGuess(Guess);
+            wordGuessed = true;
+            WinOverlay.IsVisible = true;
         }
         else
         {
+            CheckGuess(Guess);
             guessCount++;
             AddBindingToRow(guessCount);
             guessEntry.Text = "";
@@ -219,4 +222,36 @@ public partial class Gamescreen : ContentPage
         return false;
     }
 
+    //Loop over guessed word, then if letter is contained in the word and is in the correct position turn the frame green, if letter is contained in the word but is in the wrong position turn the frame yellow, if letter is not contained in the word turn the frame grey
+    private void CheckGuess(string guess)
+    {
+        for (int i = 0; i < guess.Length; i++)
+        {
+            if (guess[i] == ChosenWord[i])
+            {
+                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
+                frame.BackgroundColor = Colors.Green;
+            }
+            else if (ChosenWord.Contains(guess[i]))
+            {
+                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
+                frame.BackgroundColor = Colors.Yellow;
+            }
+            else
+            {
+                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
+                frame.BackgroundColor = Colors.Grey;
+            }
+        }
+    }
+
+    private void Close_Overlay_ButtonClicked(object sender, EventArgs e)
+    {
+        WinOverlay.IsVisible = false;
+    }
+
+    private void Settings_Menu_Clicked(object sender, EventArgs e)
+    {
+        WinOverlay.IsVisible = true;
+    }
 }

@@ -5,409 +5,545 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Gamescreen">
 
+    <Grid>
+        <VerticalStackLayout Spacing="10" ZIndex="1">
 
-    <VerticalStackLayout Spacing="10">
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+                    Margin="5"
+                    Source="wordle_logo.png"
+                    WidthRequest="200" />
+                <ImageButton
+                    x:Name="Settings_Menu"
+                    Aspect="AspectFill"
+                    Clicked="Settings_Menu_Clicked"
+                    HorizontalOptions="End"
+                    Source="settings_icon.png" />
+            </HorizontalStackLayout>
 
-        <Image
-            Margin="5"
-            Source="wordle_logo.png"
-            WidthRequest="200" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label
+                    x:Name="ChosenWordLabel"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding ChosenWord}"
+                    TextColor="Black" />
 
-        <Label
-            x:Name="ChosenWordLabel"
-            FontSize="Large"
-            HorizontalOptions="Center"
-            Text="{Binding ChosenWord}"
-            TextColor="Black" />
-
-        <Label
-            x:Name="GuessFeedbackLabel"
-            FontSize="Large"
-            HorizontalOptions="Center"
-            TextColor="Black"
-            Text="{Binding GuessFeedbackString}">
-            
-        </Label>
-
-        <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
-        <!--  Guess complete function called on completion(Enter pressed)  -->
-        <Entry
-            x:Name="guessEntry"
-            Completed="GuessEntry_Completed"
-            MaxLength="5"
-            Opacity="0"
-            TextChanged="OnGuessChange"
-            VerticalOptions="Center"
-            WidthRequest="100" />
+                <Label
+                    x:Name="GuessFeedbackLabel"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding GuessFeedbackString}"
+                    TextColor="Black" />
+            </HorizontalStackLayout>
 
 
+            <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
+            <!--  Guess complete function called on completion(Enter pressed)  -->
+            <Entry
+                x:Name="guessEntry"
+                Completed="GuessEntry_Completed"
+                MaxLength="5"
+                Opacity="0"
+                TextChanged="OnGuessChange"
+                VerticalOptions="Center"
+                WidthRequest="100" />
+
+            <Grid
+                x:Name="gameboard"
+                ColumnDefinitions="*,*,*,*,*"
+                ColumnSpacing="10"
+                HeightRequest="500"
+                RowDefinitions="*,*,*,*,*"
+                RowSpacing="15"
+                WidthRequest="500">
+
+                <!--#region Row 1-->
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <!--#endregion-->
+
+                <!--#region Row 2-->
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <!--#endregion-->
+
+                <!--#region Row 3-->
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+
+                </Frame>
+
+                <Frame
+                    Grid.Row="2"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+
+                </Frame>
+
+                <!--#endregion-->
+
+                <!--#region Row 4-->
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="3"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <!--#endregion-->
+
+                <!--#region Row 5-->
+                <Frame
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+
+                </Frame>
+
+                <Frame
+                    Grid.Row="4"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+                <!--#endregion-->
+
+
+
+
+            </Grid>
+
+        </VerticalStackLayout>
 
         <Grid
-            x:Name="gameboard"
-            ColumnDefinitions="*,*,*,*,*"
-            ColumnSpacing="10"
-            HeightRequest="500"
-            RowDefinitions="*,*,*,*,*"
-            RowSpacing="15"
-            WidthRequest="500">
+            x:Name="WinOverlay"
+            IsVisible="false"
+            ZIndex="2">
 
-            <!--#region Row 1-->
             <Frame
                 Grid.Row="0"
                 Grid.Column="0"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
+                BackgroundColor="Grey"
+                HeightRequest="1000"
+                Opacity="0.6"
+                WidthRequest="2000" />
+
+
             <Frame
                 Grid.Row="0"
-                Grid.Column="1"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="0"
-                Grid.Column="2"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="0"
-                Grid.Column="3"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="0"
-                Grid.Column="4"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <!--#endregion-->
-
-            <!--#region Row 2-->
-            <Frame
-                Grid.Row="1"
                 Grid.Column="0"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Grid.Column="1"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Grid.Column="2"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Grid.Column="3"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Grid.Column="4"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <!--#endregion-->
+                BackgroundColor="#e4ffdc"
+                HeightRequest="300"
+                Opacity="1"
+                WidthRequest="400">
+                <!--  Button will be an x  -->
+                <VerticalStackLayout Spacing="15">
+                    <Button
+                        x:Name="CloseOverlay"
+                        BackgroundColor="Transparent"
+                        BorderColor="Transparent"
+                        Clicked="Close_Overlay_ButtonClicked"
+                        FontSize="Medium"
+                        HeightRequest="5"
+                        HorizontalOptions="End"
+                        Text="X"
+                        TextColor="Grey"
+                        WidthRequest="5" />
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="Center"
+                        Text="Statistics" />
 
-            <!--#region Row 3-->
-            <Frame
-                Grid.Row="2"
-                Grid.Column="0"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
+                    <Grid
+                        ColumnDefinitions="*,*,*,*"
+                        ColumnSpacing="15"
+                        HorizontalOptions="Center"
+                        RowDefinitions="*,*">
+                        <Label
+                            x:Name="GamesPlayedLabel"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="0" />
+                        <Label
+                            x:Name="WinPercentageLabel"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="0" />
+                        <Label
+                            x:Name="CurrentStreakLabel"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="0" />
+                        <Label
+                            x:Name="MaxStreakLabel"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="0" />
 
-            <Frame
-                Grid.Row="2"
-                Grid.Column="1"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Grid.Row="2"
-                Grid.Column="2"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-
-            </Frame>
-
-            <Frame
-                Grid.Row="2"
-                Grid.Column="3"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-
-            </Frame>
-
-            <Frame
-                Grid.Row="2"
-                Grid.Column="4"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-
-            </Frame>
-
-            <!--#endregion-->
-
-            <!--#region Row 4-->
-            <Frame
-                Grid.Row="3"
-                Grid.Column="0"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="3"
-                Grid.Column="1"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="3"
-                Grid.Column="2"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="3"
-                Grid.Column="3"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="3"
-                Grid.Column="4"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <!--#endregion-->
-
-            <!--#region Row 5-->
-            <Frame
-                Grid.Row="4"
-                Grid.Column="0"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="4"
-                Grid.Column="1"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <Frame
-                Grid.Row="4"
-                Grid.Column="2"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-
-            <Frame
-                Grid.Row="4"
-                Grid.Column="3"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
- 
-            </Frame>
-
-            <Frame
-                Grid.Row="4"
-                Grid.Column="4"
-                BackgroundColor="White"
-                BorderColor="Grey"
-                CornerRadius="1">
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    PropertyChanged="Label_PropertyChanged"
-                    Text=""
-                    VerticalOptions="Center" />
-            </Frame>
-            <!--#endregion-->
+                        <Label
+                            x:Name="GamesPlayedTitle"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="Played" />
+                        <Label
+                            x:Name="WinPercentageTitle"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="Win %" />
+                        <Label
+                            x:Name="CurrentStreakTitle"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="Current Streak" />
+                        <Label
+                            x:Name="MaxStreakTitle"
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            Text="Max Streak" />
 
 
+                    </Grid>
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Button
+                            x:Name="PlayAgainButton"
+                            BackgroundColor="GreenYellow"
+                            BorderColor="Transparent"
+                            FontSize="Small"
+                            HeightRequest="10"
+                            HorizontalOptions="Center"
+                            Text="Play Again"
+                            TextColor="Grey"
+                            WidthRequest="150" />
+
+
+                    </HorizontalStackLayout>
+
+
+                </VerticalStackLayout>
+            </Frame>
 
 
         </Grid>
+    </Grid>
 
-    </VerticalStackLayout>
 
 
 
