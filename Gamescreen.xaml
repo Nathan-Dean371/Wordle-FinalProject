@@ -20,6 +20,15 @@
             Text="{Binding ChosenWord}"
             TextColor="Black" />
 
+        <Label
+            x:Name="GuessFeedbackLabel"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            TextColor="Black"
+            Text="{Binding GuessFeedbackString}">
+            
+        </Label>
+
         <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
         <!--  Guess complete function called on completion(Enter pressed)  -->
         <Entry

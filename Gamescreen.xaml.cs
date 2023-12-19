@@ -16,10 +16,24 @@ public partial class Gamescreen : ContentPage
     public string chosenWord;
     private bool wordChosen;
     private string guess;
+    private bool wordGuessed = false; 
+
+    private string guessFeedbackString = "";
 
     private Timer focusTimer;
 
     private int guessCount = 0;
+
+    public string GuessFeedbackString
+    {
+        get => guessFeedbackString;
+        set
+        {
+            guessFeedbackString = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(guessFeedbackString));
+        }
+    }
 
     public string ChosenWord
     {
@@ -64,12 +78,10 @@ public partial class Gamescreen : ContentPage
         if (wordChosen)
             return;
 
-        Debug.Print(System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName));
-
-        if (File.Exists(System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName)))
+        if (File.Exists(filePath))
         {
 
-            string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
+            string targetFile = filePath;
 
             var lines = File.ReadAllLines(targetFile);
             Random random = new Random();
@@ -98,15 +110,18 @@ public partial class Gamescreen : ContentPage
 
         guessEntry.Text = filteredText;
         Guess = guessEntry.Text;
+        GuessFeedbackString = "";
     }
 
     private async Task EntryFocus()
     {
-        await MainThread.InvokeOnMainThreadAsync(() =>
-        { 
-            guessEntry.Focus();
-        });
-        
+        if(wordGuessed == false)
+        {
+            await MainThread.InvokeOnMainThreadAsync(() =>
+            {
+                guessEntry.Focus();
+            });
+        }
     }
     
     private void AddBindingToRow(int row)
@@ -134,16 +149,23 @@ public partial class Gamescreen : ContentPage
     {
         if(Guess.Length < 5)
         {
+            GuessFeedbackString = "Word too short";
+            GuessFeedbackLabel.TextColor = Colors.Red;
             return;
         }
 
+        if(!CheckValidWord(Guess))
+        {
+            GuessFeedbackString = "Invalid word";
+            GuessFeedbackLabel.TextColor = Colors.Red;
+            return;
+        }
         if (Guess == ChosenWord)
         {
-            DisplayAlert("You won!", "You guessed the word!", "OK");  
+             wordGuessed = true;
         }
         else
         {
-            DisplayAlert("Wrong guess!", "You didn't guess the word! Try again!", "OK");
             guessCount++;
             AddBindingToRow(guessCount);
             guessEntry.Text = "";
@@ -178,4 +200,23 @@ public partial class Gamescreen : ContentPage
 
 
     }
+
+    //Check if guessed word is a valid guess against the words contained in the wordlist file
+    private bool CheckValidWord(string guess)
+    {
+        string targetFile = filePath;
+
+        var lines = File.ReadAllLines(targetFile);
+
+        foreach (string line in lines)
+        {
+            if (line == guess.ToLower())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
