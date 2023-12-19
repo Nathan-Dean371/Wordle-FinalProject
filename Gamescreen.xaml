@@ -20,13 +20,17 @@
             Text="{Binding ChosenWord}"
             TextColor="Black" />
 
+        <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
+        <!--  Guess complete function called on completion(Enter pressed)  -->
         <Entry
             x:Name="guessEntry"
+            Completed="GuessEntry_Completed"
             MaxLength="5"
             Opacity="0"
             TextChanged="OnGuessChange"
             VerticalOptions="Center"
             WidthRequest="100" />
+
 
 
         <Grid
@@ -47,7 +51,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[0]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -58,7 +63,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[1]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -69,7 +75,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[2]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -80,7 +87,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[3]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -91,7 +99,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[4]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <!--#endregion-->
@@ -105,6 +114,7 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
                     Text=""
                     VerticalOptions="Center" />
             </Frame>
@@ -116,6 +126,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -126,6 +138,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -136,6 +150,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -146,6 +162,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <!--#endregion-->
@@ -159,6 +177,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
 
@@ -170,6 +190,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
 
@@ -181,6 +203,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
 
             </Frame>
@@ -193,6 +217,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
 
             </Frame>
@@ -205,6 +231,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
 
             </Frame>
@@ -220,6 +248,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -230,6 +260,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -240,6 +272,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -250,6 +284,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -260,6 +296,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <!--#endregion-->
@@ -273,7 +311,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[5]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -284,7 +323,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[6]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <Frame
@@ -295,7 +335,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[7]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
 
@@ -307,9 +348,10 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[8]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
-
+ 
             </Frame>
 
             <Frame
@@ -320,7 +362,8 @@
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="{Binding Guess[9]}"
+                    PropertyChanged="Label_PropertyChanged"
+                    Text=""
                     VerticalOptions="Center" />
             </Frame>
             <!--#endregion-->
@@ -329,8 +372,6 @@
 
 
         </Grid>
-
-
 
     </VerticalStackLayout>
 
