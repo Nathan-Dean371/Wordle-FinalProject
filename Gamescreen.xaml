@@ -46,8 +46,9 @@
             <Frame
                 Grid.Row="0"
                 Grid.Column="0"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -58,8 +59,9 @@
             <Frame
                 Grid.Row="0"
                 Grid.Column="1"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -70,8 +72,9 @@
             <Frame
                 Grid.Row="0"
                 Grid.Column="2"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -82,8 +85,9 @@
             <Frame
                 Grid.Row="0"
                 Grid.Column="3"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -94,8 +98,9 @@
             <Frame
                 Grid.Row="0"
                 Grid.Column="4"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -109,8 +114,9 @@
             <Frame
                 Grid.Row="1"
                 Grid.Column="0"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -121,8 +127,9 @@
             <Frame
                 Grid.Row="1"
                 Grid.Column="1"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -133,8 +140,9 @@
             <Frame
                 Grid.Row="1"
                 Grid.Column="2"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -145,8 +153,9 @@
             <Frame
                 Grid.Row="1"
                 Grid.Column="3"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -157,8 +166,9 @@
             <Frame
                 Grid.Row="1"
                 Grid.Column="4"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -172,8 +182,9 @@
             <Frame
                 Grid.Row="2"
                 Grid.Column="0"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -185,8 +196,9 @@
             <Frame
                 Grid.Row="2"
                 Grid.Column="1"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -198,8 +210,9 @@
             <Frame
                 Grid.Row="2"
                 Grid.Column="2"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -212,8 +225,9 @@
             <Frame
                 Grid.Row="2"
                 Grid.Column="3"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -226,8 +240,9 @@
             <Frame
                 Grid.Row="2"
                 Grid.Column="4"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -243,8 +258,9 @@
             <Frame
                 Grid.Row="3"
                 Grid.Column="0"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -255,8 +271,9 @@
             <Frame
                 Grid.Row="3"
                 Grid.Column="1"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -267,8 +284,9 @@
             <Frame
                 Grid.Row="3"
                 Grid.Column="2"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -279,8 +297,9 @@
             <Frame
                 Grid.Row="3"
                 Grid.Column="3"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -291,8 +310,9 @@
             <Frame
                 Grid.Row="3"
                 Grid.Column="4"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -306,8 +326,9 @@
             <Frame
                 Grid.Row="4"
                 Grid.Column="0"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -318,8 +339,9 @@
             <Frame
                 Grid.Row="4"
                 Grid.Column="1"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -330,8 +352,9 @@
             <Frame
                 Grid.Row="4"
                 Grid.Column="2"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -343,8 +366,9 @@
             <Frame
                 Grid.Row="4"
                 Grid.Column="3"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -357,8 +381,9 @@
             <Frame
                 Grid.Row="4"
                 Grid.Column="4"
-                BackgroundColor="AntiqueWhite"
-                BorderColor="Black">
+                BackgroundColor="White"
+                BorderColor="Grey"
+                CornerRadius="1">
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"

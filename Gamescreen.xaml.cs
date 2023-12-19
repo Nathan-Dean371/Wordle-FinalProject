@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Wordle_FinalProject;
 
 
@@ -62,14 +64,25 @@ public partial class Gamescreen : ContentPage
         if (wordChosen)
             return;
 
-        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
-        
-        var lines = File.ReadAllLines(targetFile);
-        Random random = new Random();
-        var index = random.Next(0, lines.Length - 1);
-        ChosenWord = lines[index];
+        Debug.Print(System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName));
 
-        wordChosen = true;
+        if (File.Exists(System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName)))
+        {
+
+            string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
+
+            var lines = File.ReadAllLines(targetFile);
+            Random random = new Random();
+            var index = random.Next(0, lines.Length - 1);
+            ChosenWord = lines[index];
+
+            wordChosen = true;
+
+        }
+        else
+        {
+            chooseWord();
+        }
 
 
 
@@ -137,7 +150,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
-    private void Label_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private async void Label_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         
         //change parent frames background color to white and add a thin black border
@@ -146,24 +159,19 @@ public partial class Gamescreen : ContentPage
             Label label = (Label)sender;
             Frame frame = (Frame)label.Parent;  
 
-            if(frame != null && (label.Text != "" || label.Text != null))
+            
+
+            if(frame != null && (label.Text != "" && label.Text != null))
             {
                 frame.BackgroundColor = Colors.White;
                 frame.BorderColor = Colors.Black;
-                var animation = new Animation();
-                var scaleBig = new Animation(v => ((Label)sender).Scale = v, 1.5, 1.5, Easing.Default); // Changed 2 to 1
-                var scaleNormal = new Animation(v => ((Label)sender).Scale = v, 1, 1, Easing.Default); // Changed 1 to 2
-
-                animation.Add(0, 0.33, scaleNormal);
-                animation.Add(0.33, 0.66, scaleBig);
-                animation.Add(0.66, 1, scaleNormal);
-
-                animation.Commit(frame, "ScaleIt", 16, 100, null, null);
+                await frame.ScaleTo(1.2, 50, Easing.Linear);
+                await frame.ScaleTo(1, 50, Easing.Linear);
             }
 
-            if(frame != null && label.Text == "")
+            if(frame != null && label.Text == "" || label.Text == null)
             {
-                frame.BackgroundColor = Colors.Green;
+                frame.BackgroundColor = Colors.White;
                 frame.BorderColor = Colors.Grey;
             }
         }

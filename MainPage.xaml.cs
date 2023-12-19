@@ -9,7 +9,7 @@ public partial class MainPage : ContentPage
     private static string fileName = "nappistate.txt";
     private static string filePath = System.IO.Path.Combine(mainDir, fileName);
 
-    //public Command GetWordList { get; }
+    
 
     HttpClient httpClient;
 
@@ -18,9 +18,9 @@ public partial class MainPage : ContentPage
         httpClient = new HttpClient();
 
 		InitializeComponent();
-        
-        //GetWordList = new Command(async () => await ReadFile());
 
+        Dispatcher.DispatchAsync(async () => await ReadFile());
+        
         BindingContext = this;
         
         
@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
     private async void Start_Button_Clicked(object sender, EventArgs e)
     {
 		await Navigation.PushAsync(new Gamescreen());
-        await ReadFile();
+        //await ReadFile();
     }
 
     private void Scores_Button_Clicked(object sender, EventArgs e)
