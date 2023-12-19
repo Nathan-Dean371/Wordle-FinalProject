@@ -464,30 +464,30 @@
                             x:Name="GamesPlayedLabel"
                             Grid.Row="0"
                             Grid.Column="0"
-                            FontSize="Large"
+                            FontSize="Medium"
                             HorizontalOptions="Center"
-                            Text="0" />
+                            Text="{Binding GamesPlayed}" />
                         <Label
                             x:Name="WinPercentageLabel"
                             Grid.Row="0"
                             Grid.Column="1"
-                            FontSize="Large"
+                            FontSize="Medium"
                             HorizontalOptions="Center"
-                            Text="0" />
+                            Text="{Binding WinPercentage}" />
                         <Label
                             x:Name="CurrentStreakLabel"
                             Grid.Row="0"
                             Grid.Column="2"
-                            FontSize="Large"
+                            FontSize="Medium"
                             HorizontalOptions="Center"
-                            Text="0" />
+                            Text="{Binding CurrentStreak}" />
                         <Label
                             x:Name="MaxStreakLabel"
                             Grid.Row="0"
                             Grid.Column="3"
-                            FontSize="Large"
+                            FontSize="Medium"
                             HorizontalOptions="Center"
-                            Text="0" />
+                            Text="{Binding LongestStreak}" />
 
                         <Label
                             x:Name="GamesPlayedTitle"

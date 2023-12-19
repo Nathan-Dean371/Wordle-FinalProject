@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.IO;
+using Windows.Networking.Sockets;
 
 
 namespace Wordle_FinalProject;
@@ -8,6 +10,10 @@ public partial class MainPage : ContentPage
     private static string mainDir = FileSystem.Current.AppDataDirectory;
     private static string fileName = "nappistate.txt";
     private static string filePath = System.IO.Path.Combine(mainDir, fileName);
+
+    
+
+    
 
     
 

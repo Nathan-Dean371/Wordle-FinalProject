@@ -13,10 +13,60 @@ public partial class Gamescreen : ContentPage
     private static string fileName = "nappistate.txt";
     private static string filePath = System.IO.Path.Combine(mainDir, fileName);
 
+    private static string playerDataFileName = "playerData.txt";
+    private static string playerDataPath = System.IO.Path.Combine(mainDir, playerDataFileName);
+
     public string chosenWord;
     private bool wordChosen;
     private string guess;
-    private bool wordGuessed = false; 
+    private bool wordGuessed = false;
+
+    private int gamesPlayed;
+    public int GamesPlayed
+    {
+        get => gamesPlayed;
+        set
+        {
+            gamesPlayed = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(gamesPlayed));
+        }
+    }
+    int gamesWon;
+    string winPercentage;
+    public string WinPercentage
+    {
+        get => winPercentage; 
+        set 
+        {
+            winPercentage = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(winPercentage));
+        }
+    }
+    
+    int currentStreak;
+    public int CurrentStreak
+    {
+        get => currentStreak;
+        set
+        {
+            currentStreak = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(currentStreak));
+        }
+    }
+    int longestStreak;
+    public int LongestStreak
+    {
+        get => longestStreak;
+        set
+        {
+            longestStreak = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(longestStreak));
+        }
+    }
 
     private string guessFeedbackString = "";
 
@@ -63,6 +113,7 @@ public partial class Gamescreen : ContentPage
     public Gamescreen()
 	{
 		InitializeComponent();
+        ReadPlayerData();
 		BindingContext = this;
         wordChosen = false;
         chooseWord();
@@ -95,10 +146,6 @@ public partial class Gamescreen : ContentPage
         {
             chooseWord();
         }
-
-
-
-        
     }
 
     void OnGuessChange(object sender, TextChangedEventArgs e)
@@ -147,6 +194,16 @@ public partial class Gamescreen : ContentPage
 
     private void GuessEntry_Completed(object sender, EventArgs e)
     {
+        if(guessCount == 5)
+        {   
+            GuessFeedbackString = "No more guesses";
+
+            GamesPlayed++;
+            currentStreak = 0;
+            UpdateWinPercentage();
+            WritePlayerData();
+            return;
+        }
         if(Guess.Length < 5)
         {
             GuessFeedbackString = "Word too short";
@@ -163,16 +220,26 @@ public partial class Gamescreen : ContentPage
         if (Guess == ChosenWord)
         {
             CheckGuess(Guess);
+            
             wordGuessed = true;
             WinOverlay.IsVisible = true;
+
+            gamesWon++;
+            GamesPlayed++;
+            CurrentStreak++;
+            if(currentStreak > longestStreak)
+            {
+                LongestStreak = currentStreak;
+            }
+            UpdateWinPercentage();
+            WritePlayerData();
+            return;
         }
-        else
-        {
-            CheckGuess(Guess);
-            guessCount++;
-            AddBindingToRow(guessCount);
-            guessEntry.Text = "";
-        }
+        CheckGuess(Guess);
+        guessCount++;
+        AddBindingToRow(guessCount);
+        guessEntry.Text = "";
+        
     }
 
     private async void Label_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -253,5 +320,77 @@ public partial class Gamescreen : ContentPage
     private void Settings_Menu_Clicked(object sender, EventArgs e)
     {
         WinOverlay.IsVisible = true;
+    }
+
+    private void ReadPlayerData()
+    {
+        String line;
+
+        if (PlayerFileExists())
+        {
+            StreamReader playerFile = new StreamReader(playerDataPath);
+
+            line = playerFile.ReadLine();
+
+            //Set games played
+            GamesPlayed = Int32.Parse(line);
+            line = playerFile.ReadLine();
+            gamesWon = Int32.Parse(line);
+            line = playerFile.ReadLine();
+            currentStreak = Int32.Parse(line);
+            line = playerFile.ReadLine();
+            longestStreak = Int32.Parse(line);
+            playerFile.Close();
+
+        }
+        else
+        {
+            //Create player data file
+            StreamWriter playerFile = new StreamWriter(playerDataPath);
+
+            //Write default values to file
+            playerFile.WriteLine("0");
+            playerFile.WriteLine("0");
+            playerFile.WriteLine("0");
+            playerFile.WriteLine("0");
+
+            //Close file
+            playerFile.Close();
+        }
+
+        UpdateWinPercentage();
+    }
+
+    bool PlayerFileExists()
+    {
+        if (!File.Exists(playerDataPath))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private void WritePlayerData()
+    {
+        if(PlayerFileExists())
+        {
+            StreamWriter playerFile = new StreamWriter(playerDataPath);
+
+            playerFile.WriteLine(GamesPlayed);
+            playerFile.WriteLine(gamesWon);
+            playerFile.WriteLine(currentStreak);
+            playerFile.WriteLine(longestStreak);
+
+            playerFile.Close();
+        }
+    }
+
+    void UpdateWinPercentage()
+    {
+        if(gamesPlayed != 0)
+            WinPercentage = ((gamesWon / GamesPlayed) * 100) + "%";
+        else
+            WinPercentage = "0%";
+
     }
 }
