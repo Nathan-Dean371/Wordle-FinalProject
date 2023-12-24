@@ -1,10 +1,34 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Wordle_FinalProject"
-             x:Class="Wordle_FinalProject.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="Wordle_FinalProject.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Wordle_FinalProject">
     <Application.Resources>
         <ResourceDictionary>
+            <!--  Colors  -->
+            <Color x:Key="PrimaryBackgroundColor">#feffe7</Color>
+            <Color x:Key="SecondaryBackgroundColor">
+                #acf4f7
+            </Color>
+
+            <Color x:Key="GreenButton">#a8e6cf</Color>
+            <Color x:Key="RedButton">#ffaaaa</Color>
+            <Color x:Key="YellowButton">
+                #f6fc70
+            </Color>
+            <Color x:Key="BlueButton">#7c9efd</Color>
+
+
+
+
+
+
+
+
+
+
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

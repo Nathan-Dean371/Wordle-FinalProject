@@ -3,7 +3,7 @@
     x:Class="Wordle_FinalProject.Gamescreen"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Gamescreen">
+    Title="">
 
     <Grid>
         <VerticalStackLayout Spacing="10" ZIndex="1">
@@ -408,6 +408,80 @@
                         VerticalOptions="Center" />
                 </Frame>
                 <!--#endregion-->
+
+                <!--#region Row 6-->
+                <Frame
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="5"
+                    Grid.Column="3"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Grid.Row="5"
+                    Grid.Column="4"
+                    BackgroundColor="White"
+                    BorderColor="Grey"
+                    CornerRadius="1">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        PropertyChanged="Label_PropertyChanged"
+                        Text=""
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <!--#endregion-->
+
 
 
 

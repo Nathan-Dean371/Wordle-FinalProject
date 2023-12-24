@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Wordle_FinalProject.Scores"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Scores">
+
+
+    <VerticalStackLayout>
+        <Label
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="Scores" />
+
+        <Frame
+            BackgroundColor="{StaticResource SecondaryBackgroundColor}"
+            HorizontalOptions="Center"
+            WidthRequest="400">
+            <!--  Score list  -->
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10"
+                RowDefinitions="50,*"
+                RowSpacing="5">
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="Date-Time" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="Word" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    Text="Number of guesses" />
+
+
+                <CollectionView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    Margin="30"
+                    HeightRequest="300"
+                    ItemsSource="{Binding ScoreList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding DateTime}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Word}" />
+
+                                <Label
+                                    Grid.Column="2"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding NumberOfGuesses}" />
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </Grid>
+
+        </Frame>
+    </VerticalStackLayout>
+
+
+</ContentPage>

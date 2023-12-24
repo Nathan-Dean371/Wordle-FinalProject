@@ -2,9 +2,13 @@
 <ContentPage
     x:Class="Wordle_FinalProject.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource PrimaryBackgroundColor}">
 
-    <Grid HeightRequest="600" WidthRequest="500" RowSpacing="50">
+    <Grid
+        HeightRequest="600"
+        RowSpacing="50"
+        WidthRequest="500">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -19,24 +23,28 @@
 
         <Button
             Grid.Row="1"
-            BackgroundColor="Green"
+            BackgroundColor="{StaticResource GreenButton}"
             Clicked="Start_Button_Clicked"
             FontSize="Medium"
-            Text="Play" />
+            Text="Play"
+            TextColor="Black" />
+
 
         <Button
             Grid.Row="2"
-            BackgroundColor="DeepSkyBlue"
+            BackgroundColor="{StaticResource BlueButton}"
             Clicked="Scores_Button_Clicked"
             FontSize="Medium"
-            Text="Scores" />
+            Text="Scores"
+            TextColor="Black" />
 
         <Button
             Grid.Row="3"
-            BackgroundColor="Yellow"
+            BackgroundColor="{StaticResource YellowButton}"
             Clicked="Settings_Button_Clicked"
             FontSize="Medium"
-            Text="Settings" />
+            Text="Settings"
+            TextColor="Black" />
 
 
 

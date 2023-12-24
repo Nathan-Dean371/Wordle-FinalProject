@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using Windows.Networking.Sockets;
+
 
 
 namespace Wordle_FinalProject;
@@ -10,12 +10,6 @@ public partial class MainPage : ContentPage
     private static string mainDir = FileSystem.Current.AppDataDirectory;
     private static string fileName = "nappistate.txt";
     private static string filePath = System.IO.Path.Combine(mainDir, fileName);
-
-    
-
-    
-
-    
 
     HttpClient httpClient;
 
@@ -39,9 +33,9 @@ public partial class MainPage : ContentPage
         //await ReadFile();
     }
 
-    private void Scores_Button_Clicked(object sender, EventArgs e)
+    private async void Scores_Button_Clicked(object sender, EventArgs e)
     {
-        //Navigation.PushAsync(new Scores());
+        await Navigation.PushAsync(new Scores());
     }
 
     private void Settings_Button_Clicked(object sender, EventArgs e)

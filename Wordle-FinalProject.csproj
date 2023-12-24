@@ -60,10 +60,19 @@
 	  <MauiXaml Update="Gamescreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Scores.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Resources\Wordlist\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Scores.xaml.cs">
+	    <DependentUpon>Scores.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
