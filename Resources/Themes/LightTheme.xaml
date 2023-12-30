@@ -13,7 +13,8 @@
     <Color x:Key="YellowButton">#EDF716</Color>
     <Color x:Key="BlueButton">#235CFB</Color>
 
-    <Color x:Key="ButtonTextcolor">white</Color>
+    <Color x:Key="ButtonTextcolor">black</Color>
+    <Color x:Key="pickerBackgroundColor">transparent</Color>
 
 
 </ResourceDictionary>

@@ -19,6 +19,7 @@
     <Color x:Key="BlueButton">#7c9efd</Color>
 
     <Color x:Key="ButtonTextcolor">black</Color>
+    <Color x:Key="pickerBackgroundColor">white</Color>
 
 
 </ResourceDictionary>

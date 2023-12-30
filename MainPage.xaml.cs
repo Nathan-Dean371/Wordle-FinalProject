@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using Wordle_FinalProject.Resources.Themes;
 
 
 
@@ -19,12 +20,33 @@ public partial class MainPage : ContentPage
 
 		InitializeComponent();
 
+        Get_Saved_Theme();
         Dispatcher.DispatchAsync(async () => await ReadFile());
         
         BindingContext = this;
-        
-        
 
+    }
+
+    private void Get_Saved_Theme()
+    {
+        if(Preferences.Default.Get("theme", "light") == "light")
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+                mergedDictionaries.Add(new LightTheme());
+            }
+        }
+        else
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+                mergedDictionaries.Add(new DarkTheme());
+            }
+        }
     }
 
     private async void Start_Button_Clicked(object sender, EventArgs e)
@@ -40,7 +62,7 @@ public partial class MainPage : ContentPage
 
     private void Settings_Button_Clicked(object sender, EventArgs e)
     {
-        //Navigation.PushAsync(new Settings());
+        Navigation.PushAsync(new Settings());
     }
 
     private async Task<string> ReadFile()
