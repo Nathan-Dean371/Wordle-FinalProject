@@ -210,8 +210,9 @@ public partial class Gamescreen : ContentPage
 
     private async void GuessEntry_Completed(object sender, EventArgs e)
     {
-        if (guessCount == 6)
+        if (guessCount == 5 && Guess != ChosenWord)
         {
+            await CheckGuess(Guess);
             GuessFeedbackString = "No more guesses. The word was " + chosenWord;
             UpdatePlayAgain();
 

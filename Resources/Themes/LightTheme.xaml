@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="Wordle_FinalProject.Resources.Themes.LightTheme"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="PrimaryBackgroundColor">#feffe7</Color>
+    <Color x:Key="SecondaryBackgroundColor">#acf4f7</Color>
+
+    <Color x:Key="LogoBackground">transparent</Color>
+    <Color x:Key="GreenButton">#1DA738</Color>
+    <Color x:Key="RedButton">#DC2828</Color>
+    <Color x:Key="YellowButton">#EDF716</Color>
+    <Color x:Key="BlueButton">#235CFB</Color>
+
+    <Color x:Key="ButtonTextcolor">white</Color>
+
+
+</ResourceDictionary>

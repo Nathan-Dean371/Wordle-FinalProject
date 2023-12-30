@@ -3,47 +3,57 @@
     x:Class="Wordle_FinalProject.Scores"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Scores">
+    Title="Scores"
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
 
 
-    <VerticalStackLayout>
-        <Label
-            FontSize="Large"
-            HorizontalOptions="Center"
-            Text="Scores" />
+    <VerticalStackLayout VerticalOptions="Center">
+        <Frame BackgroundColor="{DynamicResource SecondaryBackgroundColor}" MaximumWidthRequest="500">
 
-        <Frame
-            BackgroundColor="{StaticResource SecondaryBackgroundColor}"
-            HorizontalOptions="Center"
-            WidthRequest="400">
+
             <!--  Score list  -->
             <Grid
                 ColumnDefinitions="*,*,*"
-                ColumnSpacing="10"
-                RowDefinitions="50,*"
-                RowSpacing="5">
+                ColumnSpacing="5"
+                MaximumWidthRequest="490"
+                RowDefinitions="30,40,*">
 
                 <Label
                     Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="Scores"
+                    TextColor="Black"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Grid.Row="1"
                     Grid.Column="0"
                     HorizontalOptions="Center"
-                    Text="Date-Time" />
+                    Text="Date-Time"
+                    TextDecorations="Underline"
+                    VerticalTextAlignment="Center" />
                 <Label
-                    Grid.Row="0"
+                    Grid.Row="1"
                     Grid.Column="1"
                     HorizontalOptions="Center"
-                    Text="Word" />
+                    Text="Word"
+                    TextDecorations="Underline"
+                    VerticalTextAlignment="Center" />
                 <Label
-                    Grid.Row="0"
+                    Grid.Row="1"
                     Grid.Column="2"
                     HorizontalOptions="Center"
-                    Text="Number of guesses" />
+                    Text="Number of guesses"
+                    TextDecorations="Underline"
+                    VerticalTextAlignment="Center" />
 
 
                 <CollectionView
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.ColumnSpan="3"
-                    Margin="30"
+                    Margin="5"
                     HeightRequest="300"
                     ItemsSource="{Binding ScoreList}">
                     <CollectionView.ItemTemplate>
@@ -54,17 +64,20 @@
                                     Grid.Column="0"
                                     HorizontalOptions="Center"
                                     Text="{Binding DateTime}"
-                                    TextColor="Black" />
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" />
                                 <Label
                                     Grid.Column="1"
                                     FontAttributes="Bold"
                                     HorizontalOptions="Center"
-                                    Text="{Binding Word}" />
+                                    Text="{Binding Word}"
+                                    VerticalTextAlignment="Center" />
 
                                 <Label
                                     Grid.Column="2"
                                     HorizontalOptions="Center"
-                                    Text="{Binding NumberOfGuesses}" />
+                                    Text="{Binding NumberOfGuesses}"
+                                    VerticalTextAlignment="Center" />
                             </Grid>
 
                         </DataTemplate>

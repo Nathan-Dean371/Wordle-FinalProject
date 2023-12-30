@@ -3,31 +3,31 @@
     x:Class="Wordle_FinalProject.Gamescreen"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="">
+    Title=""
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
 
-    <Grid>
+    <Grid
+        Margin="10"
+        RowDefinitions="*"
+        RowSpacing="5">
         <VerticalStackLayout Spacing="10" ZIndex="1">
 
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <HorizontalStackLayout BackgroundColor="{DynamicResource LogoBackground}" HorizontalOptions="Center">
                 <Image
                     Margin="5"
+                    HeightRequest="60"
                     Source="wordle_logo.png"
-                    WidthRequest="200" />
+                    WidthRequest="220" />
                 <ImageButton
                     x:Name="Settings_Menu"
                     Aspect="AspectFill"
+                    BackgroundColor="Transparent"
                     Clicked="Settings_Menu_Clicked"
                     HorizontalOptions="End"
                     Source="settings_icon.png" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                <Label
-                    x:Name="ChosenWordLabel"
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="{Binding ChosenWord}"
-                    TextColor="Black" />
 
                 <Label
                     x:Name="GuessFeedbackLabel"
@@ -38,24 +38,15 @@
             </HorizontalStackLayout>
 
 
-            <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
-            <!--  Guess complete function called on completion(Enter pressed)  -->
-            <Entry
-                x:Name="guessEntry"
-                Completed="GuessEntry_Completed"
-                MaxLength="5"
-                Opacity="0"
-                TextChanged="OnGuessChange"
-                VerticalOptions="Center"
-                WidthRequest="100" />
+
 
             <Grid
                 x:Name="gameboard"
                 ColumnDefinitions="*,*,*,*,*"
                 ColumnSpacing="10"
-                HeightRequest="500"
-                RowDefinitions="*,*,*,*,*"
-                RowSpacing="15"
+                HeightRequest="550"
+                RowDefinitions="*,*,*,*,*,*"
+                RowSpacing="10"
                 WidthRequest="500">
 
                 <!--#region Row 1-->
@@ -493,6 +484,7 @@
         <Grid
             x:Name="WinOverlay"
             IsVisible="false"
+            VerticalOptions="Center"
             ZIndex="2">
 
             <Frame
@@ -513,21 +505,25 @@
                 WidthRequest="400">
                 <!--  Button will be an x  -->
                 <VerticalStackLayout Spacing="15">
-                    <Button
-                        x:Name="CloseOverlay"
-                        BackgroundColor="Transparent"
-                        BorderColor="Transparent"
-                        Clicked="Close_Overlay_ButtonClicked"
-                        FontSize="Medium"
-                        HeightRequest="5"
-                        HorizontalOptions="End"
-                        Text="X"
-                        TextColor="Grey"
-                        WidthRequest="5" />
-                    <Label
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="Statistics" />
+                    <FlexLayout Direction="Row" VerticalOptions="Center">
+
+                        <Label
+                            FlexLayout.Grow="1"
+                            FontSize="Medium"
+                            HorizontalTextAlignment="Center"
+                            Text="Statistics"
+                            VerticalTextAlignment="Center" />
+
+                        <Button
+                            x:Name="CloseOverlay"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            Clicked="Close_Overlay_ButtonClicked"
+                            FontSize="Medium"
+                            Text="X"
+                            TextColor="Grey" />
+                    </FlexLayout>
+
 
                     <Grid
                         ColumnDefinitions="*,*,*,*"
@@ -618,6 +614,17 @@
 
 
         </Grid>
+
+        <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
+        <!--  Guess complete function called on completion(Enter pressed)  -->
+        <Entry
+            x:Name="guessEntry"
+            Completed="GuessEntry_Completed"
+            MaxLength="5"
+            Opacity="0"
+            TextChanged="OnGuessChange"
+            VerticalOptions="Center"
+            WidthRequest="100" />
     </Grid>
 
 

@@ -3,12 +3,14 @@
     x:Class="Wordle_FinalProject.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundColor="{StaticResource PrimaryBackgroundColor}">
+    BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
 
     <Grid
-        HeightRequest="600"
-        RowSpacing="50"
-        WidthRequest="500">
+        HeightRequest="400"
+        HorizontalOptions="Center"
+        RowSpacing="10"
+        VerticalOptions="Center"
+        WidthRequest="400">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -17,34 +19,41 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="0" BorderColor="Transparent">
-            <Image Aspect="AspectFit" Source="wordle_logo.png" />
+        <Frame
+            Grid.Row="0"
+            BackgroundColor="{DynamicResource LogoBackground}"
+            BorderColor="Transparent"
+            Padding="20">
+            <Image
+                HeightRequest="50"
+                Source="wordle_logo.png"
+                 />
         </Frame>
 
         <Button
             Grid.Row="1"
-            BackgroundColor="{StaticResource GreenButton}"
+            BackgroundColor="{DynamicResource GreenButton}"
             Clicked="Start_Button_Clicked"
             FontSize="Medium"
             Text="Play"
-            TextColor="Black" />
+            TextColor="{DynamicResource ButtonTextcolor}" />
 
 
         <Button
             Grid.Row="2"
-            BackgroundColor="{StaticResource BlueButton}"
+            BackgroundColor="{DynamicResource BlueButton}"
             Clicked="Scores_Button_Clicked"
             FontSize="Medium"
             Text="Scores"
-            TextColor="Black" />
+            TextColor="{DynamicResource ButtonTextcolor}" />
 
         <Button
             Grid.Row="3"
-            BackgroundColor="{StaticResource YellowButton}"
+            BackgroundColor="{DynamicResource YellowButton}"
             Clicked="Settings_Button_Clicked"
             FontSize="Medium"
             Text="Settings"
-            TextColor="Black" />
+            TextColor="{DynamicResource ButtonTextcolor}" />
 
 
 
