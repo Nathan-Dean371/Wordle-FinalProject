@@ -15,6 +15,7 @@ public partial class Settings : ContentPage
         else
         {
             themePicker.SelectedIndex = 1;
+        }
     }
 
     void OnPickerSelectionChanged(object sender, EventArgs e)
