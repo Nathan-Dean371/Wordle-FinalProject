@@ -34,7 +34,7 @@
                     FontSize="Large"
                     HorizontalOptions="Center"
                     Text="{Binding GuessFeedbackString}"
-                    TextColor="Black" />
+                    TextColor="{DynamicResource FeedbackTextColor}" />
             </HorizontalStackLayout>
 
 
@@ -598,11 +598,11 @@
                             BorderColor="Transparent"
                             Clicked="PlayAgainButton_Clicked"
                             FontSize="Small"
-                            HeightRequest="10"
+                            HeightRequest="50"
                             HorizontalOptions="Center"
                             IsVisible="{Binding PlayAgain}"
                             Text="Play Again"
-                            TextColor="Grey"
+                            TextColor="Black"
                             WidthRequest="150" />
 
 

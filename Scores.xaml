@@ -15,14 +15,14 @@
                 ColumnDefinitions="*,*,*"
                 ColumnSpacing="5"
                 MaximumWidthRequest="490"
-                RowDefinitions="30,40,*">
+                RowDefinitions="45,40,*">
 
                 <Label
                     Grid.Row="0"
                     Grid.ColumnSpan="3"
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="Scores"
+                    Text="Successful guesses"
                     TextColor="Black"
                     VerticalTextAlignment="Center" />
 

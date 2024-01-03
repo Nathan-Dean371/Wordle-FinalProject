@@ -21,5 +21,7 @@
     <Color x:Key="ButtonTextcolor">black</Color>
     <Color x:Key="pickerBackgroundColor">white</Color>
 
+    <Color x:Key="FeedbackTextColor">white</Color>
+
 
 </ResourceDictionary>
