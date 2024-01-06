@@ -189,7 +189,7 @@ public partial class Gamescreen : ContentPage
 
         string filteredText = new string(newText.Where(char.IsLetter).ToArray());
 
-        guessEntry.Text = filteredText;
+        guessEntry.Text = filteredText.ToLower();
         Guess = guessEntry.Text;
         GuessFeedbackString = "";
     }
@@ -344,22 +344,39 @@ public partial class Gamescreen : ContentPage
         {
             Frame frame = gameboard.Children.OfType<Frame>().Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
             await FlipFrame(frame);
+            string guessChar = guess[i].ToString().ToLower();
 
             if (guess[i] == ChosenWord[i])
             {
                 frame.BackgroundColor = Colors.Green;
+                UpdateKeyboardColor(guessChar, Colors.Green);
+
             }
             else if (ChosenWord.Contains(guess[i]))
             {
                 frame.BackgroundColor = Colors.Yellow;
+                UpdateKeyboardColor(guessChar, Colors.Yellow);
+
             }
             else
             {
                 frame.BackgroundColor = Colors.Grey;
+                UpdateKeyboardColor(guessChar, Colors.DarkGray);
             }
 
             
             
+        }
+    }
+
+    private void UpdateKeyboardColor(string character, Color color)
+    {
+        foreach (Microsoft.Maui.Controls.Button button in CustomKeyboard.Children)
+        {
+            if (button.Text.ToLower() == character)
+            {
+                button.BackgroundColor = color;
+            }
         }
     }
 
@@ -488,7 +505,12 @@ public partial class Gamescreen : ContentPage
 
         // Then rotate it back down to its original position over 250ms
         await frame.RotateXTo(0, 250);
-        #endif
+#endif
+
+
+        //await 200 milliseconds
+        await Task.Delay(200).ConfigureAwait(false);
+        
     }
 
     //Save date and time, chosen word and number of guesses to scores file

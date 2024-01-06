@@ -25,7 +25,7 @@
             x:Name="Back_Button"
             BackgroundColor="{DynamicResource RedButton}"
             Clicked="Back_Button_Clicked"
-            HeightRequest="25"
+            HeightRequest="35"
             Text="Back"
             TextColor="{DynamicResource ButtonTextcolor}"
             WidthRequest="100" />

@@ -16,6 +16,6 @@
     <Color x:Key="ButtonTextcolor">black</Color>
     <Color x:Key="pickerBackgroundColor">transparent</Color>
     <Color x:Key="FeedbackTextColor">Black</Color>
-
+    <Color x:Key="keyboardColour">#dee1e1</Color>
 
 </ResourceDictionary>

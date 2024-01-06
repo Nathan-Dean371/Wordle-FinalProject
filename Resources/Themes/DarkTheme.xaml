@@ -23,5 +23,7 @@
 
     <Color x:Key="FeedbackTextColor">white</Color>
 
+    <Color x:Key="keyboardColour">#dee1e1</Color>
+
 
 </ResourceDictionary>

@@ -540,163 +540,217 @@
                     <Button
                         Grid.Row="0"
                         Grid.Column="0"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="A" />
+                        Text="A"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="1"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="B" />
+                        Text="B"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="C" />
+                        Text="C"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="3"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="D" />
+                        Text="D"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="4"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="E" />
+                        Text="E"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
                     <Button
                         Grid.Row="0"
                         Grid.Column="5"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="F" />
+                        Text="F"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="0"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="G" />
+                        Text="G"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="H" />
+                        Text="H"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="I" />
+                        Text="I"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="3"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="J" />
+                        Text="J"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="4"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="K" />
+                        Text="K"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="1"
                         Grid.Column="5"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="L" />
+                        Text="L"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="0"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="M" />
+                        Text="M"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="1"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="N" />
+                        Text="N"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="O" />
+                        Text="O"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="3"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="P" />
+                        Text="P"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="4"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="Q" />
+                        Text="Q"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="2"
                         Grid.Column="5"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="R" />
+                        Text="R"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="0"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="S" />
+                        Text="S"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="1"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="T" />
+                        Text="T"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="U" />
+                        Text="U"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="3"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="V" />
+                        Text="V"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="4"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="W" />
+                        Text="W"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="3"
                         Grid.Column="5"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="X" />
+                        Text="X"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <!--  Enter button to submit guess  -->
                     <Button
                         Grid.Row="4"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="GuessEntry_Completed"
-                        Text="Enter" />
+                        Text="Enter"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="4"
                         Grid.Column="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="Y" />
+                        Text="Y"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                     <Button
                         Grid.Row="4"
                         Grid.Column="3"
+                        BackgroundColor="#dee1e1"
                         Clicked="Custom_Keyboard_Button_Clicked"
-                        Text="Z" />
+                        Text="Z"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
 
                     <!--  Backspace button  -->
@@ -704,9 +758,11 @@
                         Grid.Row="4"
                         Grid.Column="4"
                         Grid.ColumnSpan="2"
+                        BackgroundColor="#dee1e1"
                         Clicked="Backspace_Button_Clicked"
                         FontSize="Micro"
-                        Text="Backspace" />
+                        Text="Backspace"
+                        TextColor="{DynamicResource ButtonTextcolor}" />
 
                 </Grid>
             </Grid>

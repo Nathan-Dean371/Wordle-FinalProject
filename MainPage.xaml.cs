@@ -51,7 +51,8 @@ public partial class MainPage : ContentPage
 
     private async void Start_Button_Clicked(object sender, EventArgs e)
     {
-        await Task.Run(() => ReadFile());
+        //await Task.Run(() => ReadFile());
+        await ReadFile();
         await Navigation.PushAsync(new Gamescreen());
         
     }
