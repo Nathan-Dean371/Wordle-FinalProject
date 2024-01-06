@@ -35,4 +35,10 @@ public partial class Settings : ContentPage
             Preferences.Default.Set("theme", "dark");
         }
     }
+
+    private void Back_Button_Clicked(object sender, EventArgs e)
+    {
+        //Pop current page off navigation stack
+        Navigation.PopAsync();
+    }
 }

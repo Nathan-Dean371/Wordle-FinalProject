@@ -1,5 +1,15 @@
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Maui.Controls;
+using System.Threading.Tasks;
+using System.Timers; // Specify the namespace for Timer to resolve ambiguity
+using System.Linq;
+using Microsoft.Maui.Graphics;
+using System;
+
+using Application = Microsoft.Maui.Controls.Application;
+
 
 namespace Wordle_FinalProject;
 
@@ -85,7 +95,7 @@ public partial class Gamescreen : ContentPage
 
     private string guessFeedbackString = "";
 
-    private Timer focusTimer;
+    private System.Timers.Timer focusTimer;
 
     private int guessCount = 0;
 
@@ -133,9 +143,18 @@ public partial class Gamescreen : ContentPage
         wordChosen = false;
         chooseWord();
 
-        focusTimer = new Timer(async _ => await EntryFocus(), null, 0, 500);
+        #if !ANDROID
+        focusTimer = new System.Timers.Timer(500);
+        focusTimer.Elapsed += async (sender, e) => await EntryFocus();
+        focusTimer.AutoReset = true;
+        focusTimer.Start();
+        #endif
 
         AddBindingToRow(0);
+
+        #if ANDROID
+        Application.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+        #endif
 
     }
 
@@ -165,7 +184,7 @@ public partial class Gamescreen : ContentPage
 
     void OnGuessChange(object sender, TextChangedEventArgs e)
     {
-        Entry entry = (Entry)sender;
+        Microsoft.Maui.Controls.Entry entry = (Microsoft.Maui.Controls.Entry)sender;
         string newText = entry.Text;
 
         string filteredText = new string(newText.Where(char.IsLetter).ToArray());
@@ -177,11 +196,13 @@ public partial class Gamescreen : ContentPage
 
     private async Task EntryFocus()
     {
-        if (wordGuessed == false)
+        if (wordGuessed == false && WinOverlay.IsVisible == false || guessCount == 5)
         {
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
+                #if !ANDROID
                 guessEntry.Focus();
+                #endif
             });
         }
     }
@@ -210,56 +231,61 @@ public partial class Gamescreen : ContentPage
 
     private async void GuessEntry_Completed(object sender, EventArgs e)
     {
-        if (guessCount == 5 && Guess != ChosenWord)
-        {
-            await CheckGuess(Guess);
-            GuessFeedbackString = "No more guesses. The word was " + chosenWord;
-            UpdatePlayAgain();
-
-            WinOverlay.IsVisible = true;
-
-            GamesPlayed++;
-            currentStreak = 0;
-            UpdateWinPercentage();
-            WritePlayerData();
-            return;
-        }
-        if (Guess.Length < 5)
-        {
-            GuessFeedbackString = "Word too short";
-            GuessFeedbackLabel.TextColor = Colors.Red;
-            return;
-        }
-
-        if (!CheckValidWord(Guess))
-        {
-            GuessFeedbackString = "Invalid word";
-            GuessFeedbackLabel.TextColor = Colors.Red;
-            return;
-        }
-        if (Guess == ChosenWord)
-        {
-            await CheckGuess(Guess);
-
-            wordGuessed = true;
-            UpdatePlayAgain();
-            WinOverlay.IsVisible = true;
-
-            gamesWon++;
-            GamesPlayed++;
-            CurrentStreak++;
-            if (currentStreak > longestStreak)
+        
+        
+            if (guessCount == 5 && Guess != ChosenWord)
             {
-                LongestStreak = currentStreak;
+                await CheckGuess(Guess);
+                GuessFeedbackString = "No more guesses.\n The word was " + chosenWord;
+                UpdatePlayAgain();
+
+                WinOverlay.IsVisible = true;
+
+                GamesPlayed++;
+                currentStreak = 0;
+                UpdateWinPercentage();
+                WritePlayerData();
+                return;
             }
-            UpdateWinPercentage();
-            WritePlayerData();
-            SaveScore();
-            return;
-        }
-        await CheckGuess(Guess);
-        guessCount++;
-        AddBindingToRow(guessCount);
+            if (Guess.Length < 5)
+            {
+                GuessFeedbackString = "Word too short";
+                GuessFeedbackLabel.TextColor = Colors.Red;
+                return;
+            }
+
+            if (!CheckValidWord(Guess))
+            {
+                GuessFeedbackString = "Invalid word";
+                GuessFeedbackLabel.TextColor = Colors.Red;
+                return;
+            }
+            if (Guess == ChosenWord)
+            {
+                await CheckGuess(Guess);
+
+                wordGuessed = true;
+                UpdatePlayAgain();
+                WinOverlay.IsVisible = true;
+
+                gamesWon++;
+                GamesPlayed++;
+                CurrentStreak++;
+                if (currentStreak > longestStreak)
+                {
+                    LongestStreak = currentStreak;
+                }
+                UpdateWinPercentage();
+                WritePlayerData();
+                SaveScore();
+                return;
+            }
+            await CheckGuess(Guess);
+            guessCount++;
+            AddBindingToRow(guessCount);
+        
+        
+        
         
 
     }
@@ -316,24 +342,24 @@ public partial class Gamescreen : ContentPage
     {
         for (int i = 0; i < guess.Length; i++)
         {
+            Frame frame = gameboard.Children.OfType<Frame>().Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
+            await FlipFrame(frame);
+
             if (guess[i] == ChosenWord[i])
             {
-                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
-                await FlipFrame(frame);
                 frame.BackgroundColor = Colors.Green;
             }
             else if (ChosenWord.Contains(guess[i]))
             {
-                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
-                await FlipFrame(frame);
                 frame.BackgroundColor = Colors.Yellow;
             }
             else
             {
-                Frame frame = (Frame)gameboard.Children.Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
-                await FlipFrame(frame);
                 frame.BackgroundColor = Colors.Grey;
             }
+
+            
+            
         }
     }
 
@@ -345,7 +371,10 @@ public partial class Gamescreen : ContentPage
     private void Settings_Menu_Clicked(object sender, EventArgs e)
     {
         UpdatePlayAgain();
+       
         WinOverlay.IsVisible = true;
+
+        guessEntry.Unfocus();
     }
 
     private void ReadPlayerData()
@@ -354,34 +383,33 @@ public partial class Gamescreen : ContentPage
 
         if (PlayerFileExists())
         {
-            StreamReader playerFile = new StreamReader(playerDataPath);
+            using (StreamReader playerFile = new StreamReader(playerDataPath)) // Use 'using' to ensure the StreamReader is disposed of correctly
+            {
+                line = playerFile.ReadLine();
 
-            line = playerFile.ReadLine();
-
-            //Set games played
-            GamesPlayed = Int32.Parse(line);
-            line = playerFile.ReadLine();
-            gamesWon = Int32.Parse(line);
-            line = playerFile.ReadLine();
-            currentStreak = Int32.Parse(line);
-            line = playerFile.ReadLine();
-            longestStreak = Int32.Parse(line);
-            playerFile.Close();
+                //Set games played
+                GamesPlayed = Int32.Parse(line);
+                line = playerFile.ReadLine();
+                gamesWon = Int32.Parse(line);
+                line = playerFile.ReadLine();
+                currentStreak = Int32.Parse(line);
+                line = playerFile.ReadLine();
+                longestStreak = Int32.Parse(line);
+            }
 
         }
         else
         {
             //Create player data file
-            StreamWriter playerFile = new StreamWriter(playerDataPath);
-
-            //Write default values to file
-            playerFile.WriteLine("0");
-            playerFile.WriteLine("0");
-            playerFile.WriteLine("0");
-            playerFile.WriteLine("0");
-
-            //Close file
-            playerFile.Close();
+            using (StreamWriter playerFile = new StreamWriter(playerDataPath)) // Use 'using' to ensure the StreamWriter is disposed of correctly
+            {
+                //Write default values to file
+                playerFile.WriteLine("0");
+                playerFile.WriteLine("0");
+                playerFile.WriteLine("0");
+                playerFile.WriteLine("0");
+            }
+            
         }
 
         UpdateWinPercentage();
@@ -400,14 +428,13 @@ public partial class Gamescreen : ContentPage
     {
         if (PlayerFileExists())
         {
-            StreamWriter playerFile = new StreamWriter(playerDataPath);
-
-            playerFile.WriteLine(GamesPlayed);
-            playerFile.WriteLine(gamesWon);
-            playerFile.WriteLine(currentStreak);
-            playerFile.WriteLine(longestStreak);
-
-            playerFile.Close();
+            using (StreamWriter playerFile = new StreamWriter(playerDataPath)) // Use 'using' to ensure the StreamWriter is disposed of correctly
+            {
+                playerFile.WriteLine(GamesPlayed);
+                playerFile.WriteLine(gamesWon);
+                playerFile.WriteLine(currentStreak);
+                playerFile.WriteLine(longestStreak);
+            }
         }
     }
 
@@ -453,9 +480,15 @@ public partial class Gamescreen : ContentPage
     //Vertically flip frame
     private async Task FlipFrame(Frame frame)
     {
-        await frame.RotateXTo(90, 200, Easing.Linear);
-        
-        await frame.RotateXTo(0, 200, Easing.Linear);
+
+        //Removed animations from android as they were causing an unsolvable memory leak
+        #if !ANDROID
+        // Rotate the frame 90 degrees upwards over 250ms
+        await frame.RotateXTo(90, 250);
+
+        // Then rotate it back down to its original position over 250ms
+        await frame.RotateXTo(0, 250);
+        #endif
     }
 
     //Save date and time, chosen word and number of guesses to scores file
@@ -479,7 +512,30 @@ public partial class Gamescreen : ContentPage
 
     }
 
-    
+    private void Back_Button_Clicked(object sender, EventArgs e)
+    {
+        //Pop current page off navigation stack
+        Navigation.PopAsync();
+    }
 
+    //When a button in the custom keyboard grid is click add the letter to the guess entry
+    private void Custom_Keyboard_Button_Clicked(object sender, EventArgs e)
+    {
+        if(guessEntry.Text.Length == 5)
+            return;
 
+        Microsoft.Maui.Controls.Button button = (Microsoft.Maui.Controls.Button)sender;
+        guessEntry.Text += button.Text;
+    }
+
+    //Backspace button method
+    private void Backspace_Button_Clicked(object sender, EventArgs e)
+    {
+        if (guessEntry.Text.Length > 0)
+        {
+            guessEntry.Text = guessEntry.Text.Remove(guessEntry.Text.Length - 1);
+        }
+    }
+
+  
 }

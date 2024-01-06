@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 
         Get_Saved_Theme();
-        Dispatcher.DispatchAsync(async () => await ReadFile());
+        //Dispatcher.DispatchAsync(async () => await ReadFile());
         
         BindingContext = this;
 
@@ -51,8 +51,9 @@ public partial class MainPage : ContentPage
 
     private async void Start_Button_Clicked(object sender, EventArgs e)
     {
-		await Navigation.PushAsync(new Gamescreen());
-        //await ReadFile();
+        await Task.Run(() => ReadFile());
+        await Navigation.PushAsync(new Gamescreen());
+        
     }
 
     private async void Scores_Button_Clicked(object sender, EventArgs e)
@@ -76,7 +77,7 @@ public partial class MainPage : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     String result = await response.Content.ReadAsStringAsync();
-                    WriteTextToFile(result, fileName);
+                    await WriteTextToFile(result, fileName);
                 }
 
             }
@@ -88,7 +89,7 @@ public partial class MainPage : ContentPage
         return String.Empty;
     }
 
-    public async void WriteTextToFile(string text, string targetFileName)
+    public async Task WriteTextToFile(string text, string targetFileName)
     {
         // Write the file content to the app data directory  
         string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, targetFileName);

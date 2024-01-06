@@ -6,7 +6,7 @@
     BackgroundColor="{DynamicResource PrimaryBackgroundColor}">
 
 
-    <VerticalStackLayout VerticalOptions="Center">
+    <VerticalStackLayout Spacing="15" VerticalOptions="Center">
         <Frame BackgroundColor="{DynamicResource SecondaryBackgroundColor}" MaximumWidthRequest="500">
 
 
@@ -87,6 +87,15 @@
             </Grid>
 
         </Frame>
+
+        <Button
+            x:Name="Back_Button"
+            BackgroundColor="{DynamicResource RedButton}"
+            Clicked="Back_Button_Clicked"
+            HeightRequest="25"
+            Text="Back"
+            TextColor="{DynamicResource ButtonTextcolor}"
+            WidthRequest="100" />
     </VerticalStackLayout>
 
 

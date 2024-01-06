@@ -20,7 +20,7 @@
                     WidthRequest="220" />
                 <ImageButton
                     x:Name="Settings_Menu"
-                    Aspect="AspectFill"
+                    Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     Clicked="Settings_Menu_Clicked"
                     HorizontalOptions="End"
@@ -44,20 +44,21 @@
                 x:Name="gameboard"
                 ColumnDefinitions="*,*,*,*,*"
                 ColumnSpacing="10"
-                HeightRequest="550"
+                HeightRequest="280"
                 RowDefinitions="*,*,*,*,*,*"
                 RowSpacing="10"
-                WidthRequest="500">
+                WidthRequest="270">
 
                 <!--#region Row 1-->
                 <Frame
                     Grid.Row="0"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -66,11 +67,12 @@
                 <Frame
                     Grid.Row="0"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -79,11 +81,12 @@
                 <Frame
                     Grid.Row="0"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -92,11 +95,12 @@
                 <Frame
                     Grid.Row="0"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -105,11 +109,12 @@
                 <Frame
                     Grid.Row="0"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -121,11 +126,12 @@
                 <Frame
                     Grid.Row="1"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -134,11 +140,12 @@
                 <Frame
                     Grid.Row="1"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -147,11 +154,12 @@
                 <Frame
                     Grid.Row="1"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -160,11 +168,12 @@
                 <Frame
                     Grid.Row="1"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -173,11 +182,12 @@
                 <Frame
                     Grid.Row="1"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -189,11 +199,12 @@
                 <Frame
                     Grid.Row="2"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -203,11 +214,12 @@
                 <Frame
                     Grid.Row="2"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -217,11 +229,12 @@
                 <Frame
                     Grid.Row="2"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -232,11 +245,12 @@
                 <Frame
                     Grid.Row="2"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -247,11 +261,12 @@
                 <Frame
                     Grid.Row="2"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -265,11 +280,12 @@
                 <Frame
                     Grid.Row="3"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -278,11 +294,12 @@
                 <Frame
                     Grid.Row="3"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -291,11 +308,12 @@
                 <Frame
                     Grid.Row="3"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -304,11 +322,12 @@
                 <Frame
                     Grid.Row="3"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -317,11 +336,12 @@
                 <Frame
                     Grid.Row="3"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -333,11 +353,12 @@
                 <Frame
                     Grid.Row="4"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -346,11 +367,12 @@
                 <Frame
                     Grid.Row="4"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -359,11 +381,12 @@
                 <Frame
                     Grid.Row="4"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -373,11 +396,12 @@
                 <Frame
                     Grid.Row="4"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -388,11 +412,12 @@
                 <Frame
                     Grid.Row="4"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -404,11 +429,12 @@
                 <Frame
                     Grid.Row="5"
                     Grid.Column="0"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -418,11 +444,12 @@
                 <Frame
                     Grid.Row="5"
                     Grid.Column="1"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -432,11 +459,12 @@
                 <Frame
                     Grid.Row="5"
                     Grid.Column="2"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -446,11 +474,12 @@
                 <Frame
                     Grid.Row="5"
                     Grid.Column="3"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -460,11 +489,12 @@
                 <Frame
                     Grid.Row="5"
                     Grid.Column="4"
+                    Padding="0"
                     BackgroundColor="White"
                     BorderColor="Grey"
                     CornerRadius="1">
                     <Label
-                        FontSize="Large"
+                        FontSize="Medium"
                         HorizontalOptions="Center"
                         PropertyChanged="Label_PropertyChanged"
                         Text=""
@@ -478,6 +508,217 @@
 
 
             </Grid>
+
+            <Grid HeightRequest="500" WidthRequest="270">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <Grid
+                    x:Name="CustomKeyboard"
+                    Grid.Row="1"
+                    ColumnSpacing="5"
+                    RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="A" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="B" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="C" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="D" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="E" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="F" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="G" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="H" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="I" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="J" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="K" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="L" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="M" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="N" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="O" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="P" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="Q" />
+
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="R" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="S" />
+
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="T" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="U" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="V" />
+
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="W" />
+
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="5"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="X" />
+
+                    <!--  Enter button to submit guess  -->
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Clicked="GuessEntry_Completed"
+                        Text="Enter" />
+
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="Y" />
+
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Clicked="Custom_Keyboard_Button_Clicked"
+                        Text="Z" />
+
+
+                    <!--  Backspace button  -->
+                    <Button
+                        Grid.Row="4"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Clicked="Backspace_Button_Clicked"
+                        FontSize="Micro"
+                        Text="Backspace" />
+
+                </Grid>
+            </Grid>
+
+            <Button
+                x:Name="Back_Button"
+                BackgroundColor="{DynamicResource RedButton}"
+                Clicked="Back_Button_Clicked"
+                HeightRequest="25"
+                Text="Back"
+                TextColor="{DynamicResource ButtonTextcolor}"
+                WidthRequest="100" />
 
         </VerticalStackLayout>
 

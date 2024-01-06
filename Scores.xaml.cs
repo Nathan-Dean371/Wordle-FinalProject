@@ -58,8 +58,12 @@ public partial class Scores : ContentPage
 
         return fileText;
     }
-	
 
+    private void Back_Button_Clicked(object sender, EventArgs e)
+    {
+        //Pop current page off navigation stack
+        Navigation.PopAsync();
+    }
 
 
 }
