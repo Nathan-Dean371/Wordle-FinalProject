@@ -2,7 +2,18 @@
     x:Class="Wordle_FinalProject.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:maui="using:Microsoft.Maui"
-    xmlns:local="using:Wordle_FinalProject.WinUI">
+    xmlns:local="using:Wordle_FinalProject.WinUI"
+    xmlns:maui="using:Microsoft.Maui">
+
+    <maui:MauiWinUIApplication.Resources>
+        <ResourceDictionary>
+            <!--  ToggleSwitch : Turn off ON/OFF label  -->
+            <Style TargetType="ToggleSwitch">
+                <Setter Property="OffContent" Value="Hint's Off" />
+                <Setter Property="OnContent" Value="Hint's on" />
+                <Setter Property="Margin" Value="0,0,-110,0" />
+            </Style>
+        </ResourceDictionary>
+    </maui:MauiWinUIApplication.Resources>
 
 </maui:MauiWinUIApplication>

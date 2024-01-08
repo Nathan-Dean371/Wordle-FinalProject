@@ -35,6 +35,14 @@
                     HorizontalOptions="Center"
                     Text="{Binding GuessFeedbackString}"
                     TextColor="{DynamicResource FeedbackTextColor}" />
+
+                <Label
+                    x:Name="HintLabel"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding HintString}"
+                    TextColor="{DynamicResource FeedbackTextColor}" />
+
             </HorizontalStackLayout>
 
 
@@ -781,7 +789,7 @@
                         Grid.Row="4"
                         Grid.Column="4"
                         Grid.ColumnSpan="2"
-                        Padding="10"
+                        Padding="0"
                         BackgroundColor="#dee1e1"
                         Clicked="Backspace_Button_Clicked"
                         FontSize="Micro"

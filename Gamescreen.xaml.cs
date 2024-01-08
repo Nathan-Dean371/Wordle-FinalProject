@@ -43,6 +43,20 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    private string hintString;
+
+    public string HintString
+    {
+        get => hintString;
+        set
+        {
+
+           hintString = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(hintString));
+        }
+    }
+
     private int gamesPlayed;
     public int GamesPlayed
     {
@@ -228,11 +242,15 @@ public partial class Gamescreen : ContentPage
 
     private async void GuessEntry_Completed(object sender, EventArgs e)
     {
-        
+            if(guessCount >= 3 && Preferences.Default.Get("hints", "on") == "on")
+            {
+                HintString = "Hint: The word contains the letter's " + ChosenWord.Substring(0, 3);
+            }
         
             if (guessCount == 5 && Guess != ChosenWord)
             {
                 await CheckGuess(Guess);
+                HintString = "";
                 GuessFeedbackString = "No more guesses.\nThe word was " + chosenWord;
                 UpdatePlayAgain();
 
@@ -260,7 +278,7 @@ public partial class Gamescreen : ContentPage
             if (Guess == ChosenWord)
             {
                 await CheckGuess(Guess);
-
+                HintString = "";
                 wordGuessed = true;
                 UpdatePlayAgain();
                 WinOverlay.IsVisible = true;

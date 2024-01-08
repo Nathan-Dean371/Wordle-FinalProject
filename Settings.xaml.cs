@@ -8,6 +8,14 @@ public partial class Settings : ContentPage
 	public Settings()
 	{
 		InitializeComponent();
+
+        InitializeTheme();
+
+        InitializeHints();
+    }
+
+    void InitializeTheme()
+    {
         if (Preferences.Default.Get("theme", "light") == "light")
         {
             themePicker.SelectedIndex = 0;
@@ -15,6 +23,18 @@ public partial class Settings : ContentPage
         else
         {
             themePicker.SelectedIndex = 1;
+        }
+    }
+
+    void InitializeHints()
+    {
+        if (Preferences.Default.Get("hints", "on") == "on")
+        {
+            hintsSwitch.IsToggled = true;
+        }
+        else
+        {
+            hintsSwitch.IsToggled = false;
         }
     }
 
@@ -40,5 +60,17 @@ public partial class Settings : ContentPage
     {
         //Pop current page off navigation stack
         Navigation.PopAsync();
+    }
+
+    private void Switch_Toggled(object sender, ToggledEventArgs e)
+    {
+        if(e.Value)
+        {
+            Preferences.Default.Set("hints", "on");
+        }
+        else
+        {
+            Preferences.Default.Set("hints", "off");
+        }
     }
 }
