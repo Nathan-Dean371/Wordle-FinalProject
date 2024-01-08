@@ -15,7 +15,7 @@
                 ColumnDefinitions="*,*,*"
                 ColumnSpacing="5"
                 MaximumWidthRequest="490"
-                RowDefinitions="45,40,*">
+                RowDefinitions="60,40,*">
 
                 <Label
                     Grid.Row="0"

@@ -9,6 +9,7 @@ using Microsoft.Maui.Graphics;
 using System;
 
 using Application = Microsoft.Maui.Controls.Application;
+using Microsoft.Maui.Storage;
 
 
 namespace Wordle_FinalProject;
@@ -343,7 +344,21 @@ public partial class Gamescreen : ContentPage
         for (int i = 0; i < guess.Length; i++)
         {
             Frame frame = gameboard.Children.OfType<Frame>().Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
-            await FlipFrame(frame);
+
+
+            // Create a weak reference to the object
+            WeakReference weakRef = new WeakReference(frame);
+
+            // Later, when you want to call FlipFrame...
+            if (weakRef.IsAlive)
+            {
+                Frame frame_weak = weakRef.Target as Frame;
+                if (frame != null)
+                {
+                    await FlipFrame(frame_weak);
+                }
+            }
+
             string guessChar = guess[i].ToString().ToLower();
 
             if (guess[i] == ChosenWord[i])
@@ -352,11 +367,15 @@ public partial class Gamescreen : ContentPage
                 UpdateKeyboardColor(guessChar, Colors.Green);
 
             }
-            else if (ChosenWord.Contains(guess[i]))
+
+            //If the letter is contained in the word but is in the wrong position
+            //Only check if the letter is contained in the word if it is not already green
+            //This is to prevent the frame from turning yellow if the letter is in the correct position
+            //If the letter is contained in the word but appears twice in the guess, only turn the first instance yellow
+            else if (frame.BackgroundColor != Colors.Green && ChosenWord.Contains(guess[i]) && !guess.Substring(0, i).Contains(guess[i]))
             {
                 frame.BackgroundColor = Colors.Yellow;
                 UpdateKeyboardColor(guessChar, Colors.Yellow);
-
             }
             else
             {
@@ -479,6 +498,7 @@ public partial class Gamescreen : ContentPage
 
         }
 
+        Reset_Keyboard();
 
         guessEntry.Text = "";
         guessCount = 0;
@@ -498,18 +518,19 @@ public partial class Gamescreen : ContentPage
     private async Task FlipFrame(Frame frame)
     {
 
-        //Removed animations from android as they were causing an unsolvable memory leak
+        //On my huwawei phone the flip animation causes an unexplanable memory leak, so I have disabled it for android
+        //However, testing on other devices it dosen't seem to cause any issues
         #if !ANDROID
         // Rotate the frame 90 degrees upwards over 250ms
         await frame.RotateXTo(90, 250);
 
         // Then rotate it back down to its original position over 250ms
         await frame.RotateXTo(0, 250);
-#endif
+        #endif
 
 
         //await 200 milliseconds
-        await Task.Delay(200).ConfigureAwait(false);
+        //await Task.Delay(200).ConfigureAwait(false);
         
     }
 
@@ -556,6 +577,15 @@ public partial class Gamescreen : ContentPage
         if (guessEntry.Text.Length > 0)
         {
             guessEntry.Text = guessEntry.Text.Remove(guessEntry.Text.Length - 1);
+        }
+    }
+
+    //Set onscreen keyboard colours to default
+    private void Reset_Keyboard()
+    {
+        foreach (Microsoft.Maui.Controls.Button button in CustomKeyboard.Children)
+        {
+            button.BackgroundColor = Color.FromHex("dee1e1");
         }
     }
 
