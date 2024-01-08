@@ -16,7 +16,7 @@ namespace Wordle_FinalProject;
 
 public partial class Gamescreen : ContentPage
 {
-
+    //Variables for reading and writing of persistant data
     private static string mainDir = FileSystem.Current.AppDataDirectory;
     private static string fileName = "nappistate.txt";
     private static string filePath = System.IO.Path.Combine(mainDir, fileName);
@@ -27,10 +27,13 @@ public partial class Gamescreen : ContentPage
     private static string scoresFileName = "scores.txt";
     private static string scoresPath = System.IO.Path.Combine(mainDir, scoresFileName);
 
-    public string chosenWord;
     private bool wordChosen;
-    private string guess;
     private bool wordGuessed = false;
+    int gamesWon;
+    private System.Timers.Timer focusTimer;
+    private int guessCount = 0;
+
+    //Properties for binding
     private bool playAgain;
     public bool PlayAgain
     {
@@ -44,7 +47,6 @@ public partial class Gamescreen : ContentPage
     }
 
     private string hintString;
-
     public string HintString
     {
         get => hintString;
@@ -68,7 +70,7 @@ public partial class Gamescreen : ContentPage
             OnPropertyChanged(nameof(gamesPlayed));
         }
     }
-    int gamesWon;
+
     string winPercentage;
     public string WinPercentage
     {
@@ -92,6 +94,7 @@ public partial class Gamescreen : ContentPage
             OnPropertyChanged(nameof(currentStreak));
         }
     }
+
     int longestStreak;
     public int LongestStreak
     {
@@ -105,11 +108,6 @@ public partial class Gamescreen : ContentPage
     }
 
     private string guessFeedbackString = "";
-
-    private System.Timers.Timer focusTimer;
-
-    private int guessCount = 0;
-
     public string GuessFeedbackString
     {
         get => guessFeedbackString;
@@ -121,6 +119,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    public string chosenWord;
     public string ChosenWord
     {
         get => chosenWord;
@@ -135,6 +134,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    private string guess;
     public string Guess
     {
         get => guess;
@@ -154,6 +154,7 @@ public partial class Gamescreen : ContentPage
         wordChosen = false;
         chooseWord();
 
+        //Only run the entry focusing timer if not on android
         #if !ANDROID
         focusTimer = new System.Timers.Timer(500);
         focusTimer.Elapsed += async (sender, e) => await EntryFocus();
@@ -163,12 +164,14 @@ public partial class Gamescreen : ContentPage
 
         AddBindingToRow(0);
 
+        //Hide android keyboard on android devices
         #if ANDROID
         Application.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         #endif
 
     }
 
+    //Choose a random word from the wordlist file
     void chooseWord()
     {
         if (wordChosen)
@@ -193,6 +196,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    //When the guess entry text changes, remove any non letter characters
     void OnGuessChange(object sender, TextChangedEventArgs e)
     {
         Microsoft.Maui.Controls.Entry entry = (Microsoft.Maui.Controls.Entry)sender;
@@ -205,6 +209,7 @@ public partial class Gamescreen : ContentPage
         GuessFeedbackString = "";
     }
 
+    //Focus the guess entry to allow input
     private async Task EntryFocus()
     {
         if (wordGuessed == false && WinOverlay.IsVisible == false || guessCount == 5)
@@ -218,6 +223,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    //Add binding to each frame in the row specified
     private void AddBindingToRow(int row)
     {
         foreach (Frame frame in gameboard.Children.Where(child => gameboard.GetRow(child) == row - 1))
@@ -234,77 +240,78 @@ public partial class Gamescreen : ContentPage
         }
     }
 
-    private void Guess_Button_Clicked(object sender, EventArgs e)
-    {
-        guessCount++;
-        AddBindingToRow(guessCount);
-    }
-
+    //When the guess entry is completed, check if the guess is valid and if it is check if it is the correct word
     private async void GuessEntry_Completed(object sender, EventArgs e)
     {
-            if(guessCount >= 3 && Preferences.Default.Get("hints", "on") == "on")
-            {
-                HintString = "Hint: The word contains the letter's " + ChosenWord.Substring(0, 3);
-            }
+        //If the hint setting is on and the user has guessed 3 times, display a hint
+        if(guessCount >= 3 && Preferences.Default.Get("hints", "on") == "on")
+        {
+            HintString = "Hint: The word contains the letter's " + ChosenWord.Substring(0, 3);
+        }
         
-            if (guessCount == 5 && Guess != ChosenWord)
-            {
-                await CheckGuess(Guess);
-                HintString = "";
-                GuessFeedbackString = "No more guesses.\nThe word was " + chosenWord;
-                UpdatePlayAgain();
-
-                WinOverlay.IsVisible = true;
-
-                GamesPlayed++;
-                currentStreak = 0;
-                UpdateWinPercentage();
-                WritePlayerData();
-                return;
-            }
-            if (Guess.Length < 5)
-            {
-                GuessFeedbackString = "Word too short";
-                GuessFeedbackLabel.TextColor = Colors.Red;
-                return;
-            }
-
-            if (!CheckValidWord(Guess))
-            {
-                GuessFeedbackString = "Invalid word";
-                GuessFeedbackLabel.TextColor = Colors.Red;
-                return;
-            }
-            if (Guess == ChosenWord)
-            {
-                await CheckGuess(Guess);
-                HintString = "";
-                wordGuessed = true;
-                UpdatePlayAgain();
-                WinOverlay.IsVisible = true;
-
-                gamesWon++;
-                GamesPlayed++;
-                CurrentStreak++;
-                if (currentStreak > longestStreak)
-                {
-                    LongestStreak = currentStreak;
-                }
-                UpdateWinPercentage();
-                WritePlayerData();
-                SaveScore();
-                return;
-            }
+        //If the user has guessed 5 times and the word is still not guessed, display the correct word and end the game
+        if (guessCount == 5 && Guess != ChosenWord)
+        {
             await CheckGuess(Guess);
-            guessCount++;
-            AddBindingToRow(guessCount);
+            HintString = "";
+            GuessFeedbackString = "No more guesses.\nThe word was " + chosenWord;
+            UpdatePlayAgain();
+
+            WinOverlay.IsVisible = true;
+
+            GamesPlayed++;
+            currentStreak = 0;
+            UpdateWinPercentage();
+            WritePlayerData();
+            return;
+        }
+
+        //If the guess is less than 5 characters long, display an error message
+        if (Guess.Length < 5)
+        {
+            GuessFeedbackString = "Word too short";
+            GuessFeedbackLabel.TextColor = Colors.Red;
+            return;
+        }
+
+        //If the guess is not a valid word, display an error message
+        if (!CheckValidWord(Guess))
+        {
+            GuessFeedbackString = "Invalid word";
+            GuessFeedbackLabel.TextColor = Colors.Red;
+            return;
+        }
         
-        
-        
-        
+        //If the guess is the correct word, display a win message and end the game
+        if (Guess == ChosenWord)
+        {
+            await CheckGuess(Guess);
+            HintString = "";
+            wordGuessed = true;
+            UpdatePlayAgain();
+            WinOverlay.IsVisible = true;
+
+            gamesWon++;
+            GamesPlayed++;
+            CurrentStreak++;
+            if (currentStreak > longestStreak)
+            {
+                LongestStreak = currentStreak;
+            }
+            UpdateWinPercentage();
+            WritePlayerData();
+            SaveScore();
+            return;
+        }
+
+        //If the guess is not the correct word, check the guess against the chosen word
+        await CheckGuess(Guess);
+        guessCount++;
+        AddBindingToRow(guessCount);
 
     }
 
+    //When the text of a label changes, check if the label is empty and if it is change the background color of the parent frame to grey and animate the frame
     private async void Label_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
 
@@ -361,7 +368,6 @@ public partial class Gamescreen : ContentPage
             // Create a weak reference to the object
             WeakReference weakRef = new WeakReference(frame);
 
-            // Later, when you want to call FlipFrame...
             if (weakRef.IsAlive)
             {
                 Frame frame_weak = weakRef.Target as Frame;
@@ -415,10 +421,7 @@ public partial class Gamescreen : ContentPage
                         UpdateKeyboardColor(guessChar, Colors.DarkGray);
                     }
                 }
-                //If the letter is contained in the word but is in the wrong position
-                //Only check if the letter is contained in the word if it is not already green
-                //This is to prevent the frame from turning yellow if the letter is in the correct position
-                //If the letter is contained in the word but appears twice in the guess, only turn the first instance yellow unless the second instance is in the correct position
+
                 else
                 {
                     frame.BackgroundColor = Colors.Green;
@@ -431,6 +434,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    //Check if a string contains a duplicate character
     public bool ContainsDuplicateCharacter(string s, char c)
     {
         bool seenFirst = false;
@@ -445,6 +449,7 @@ public partial class Gamescreen : ContentPage
         return false;
     }
 
+    //Update the color of the button in the custom keyboard grid
     private void UpdateKeyboardColor(string character, Color color)
     {
         foreach (Microsoft.Maui.Controls.Button button in CustomKeyboard.Children)
@@ -456,11 +461,13 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    //When the overlay close button is clicked, close the overlay
     private void Close_Overlay_ButtonClicked(object sender, EventArgs e)
     {
         WinOverlay.IsVisible = false;
     }
 
+    //When the settings button is clicked, open the settings overlay
     private void Settings_Menu_Clicked(object sender, EventArgs e)
     {
         UpdatePlayAgain();
@@ -470,6 +477,7 @@ public partial class Gamescreen : ContentPage
         guessEntry.Unfocus();
     }
 
+    //Read player data from file
     private void ReadPlayerData()
     {
         String line;
@@ -508,6 +516,7 @@ public partial class Gamescreen : ContentPage
         UpdateWinPercentage();
     }
 
+    //Check if player data file exists
     bool PlayerFileExists()
     {
         if (!File.Exists(playerDataPath))
@@ -517,6 +526,7 @@ public partial class Gamescreen : ContentPage
         return true;
     }
 
+    //Write player data to file
     private void WritePlayerData()
     {
         if (PlayerFileExists())
@@ -531,6 +541,7 @@ public partial class Gamescreen : ContentPage
         }
     }
 
+    //Update win percentage
     void UpdateWinPercentage()
     {
         if (gamesPlayed != 0)
@@ -540,6 +551,7 @@ public partial class Gamescreen : ContentPage
 
     }
 
+    //When the play again button is clicked, reset the gameboard and choose a new word
     private void PlayAgainButton_Clicked(object sender, EventArgs e)
     {
 
@@ -566,6 +578,7 @@ public partial class Gamescreen : ContentPage
         WinOverlay.IsVisible = false;
     }
 
+    //Update the play again button
     void UpdatePlayAgain()
     {
         PlayAgain = (wordGuessed == true || guessCount == 5);
@@ -613,6 +626,7 @@ public partial class Gamescreen : ContentPage
 
     }
 
+    //When the back button is clicked, pop the current page off the navigation stack
     private void Back_Button_Clicked(object sender, EventArgs e)
     {
         //Pop current page off navigation stack

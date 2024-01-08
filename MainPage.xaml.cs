@@ -27,6 +27,7 @@ public partial class MainPage : ContentPage
 
     }
 
+    //Load the saved theme and set it
     private void Get_Saved_Theme()
     {
         if(Preferences.Default.Get("theme", "light") == "light")
@@ -49,6 +50,7 @@ public partial class MainPage : ContentPage
         }
     }
 
+    //When the start button is clicked, read the file and then navigate to the game screen
     private async void Start_Button_Clicked(object sender, EventArgs e)
     {
         await Task.Run(() => ReadFile());
@@ -57,16 +59,19 @@ public partial class MainPage : ContentPage
         
     }
 
+    //When the scores button is clicked, navigate to the scores screen
     private async void Scores_Button_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Scores());
     }
 
+    //When the settings button is clicked, navigate to the settings page
     private void Settings_Button_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Settings());
     }
 
+    //Read the file from the github repo and save it to the app data directory, if already saved read from the device
     private async Task<string> ReadFile()
     {
         if (!File.Exists(System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, fileName)))
@@ -90,6 +95,7 @@ public partial class MainPage : ContentPage
         return String.Empty;
     }
 
+    //Write the given text to the given file
     public async Task WriteTextToFile(string text, string targetFileName)
     {
         // Write the file content to the app data directory  

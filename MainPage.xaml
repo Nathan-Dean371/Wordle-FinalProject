@@ -21,13 +21,10 @@
 
         <Frame
             Grid.Row="0"
+            Padding="20"
             BackgroundColor="{DynamicResource LogoBackground}"
-            BorderColor="Transparent"
-            Padding="20">
-            <Image
-                HeightRequest="50"
-                Source="wordle_logo.png"
-                 />
+            BorderColor="Transparent">
+            <Image HeightRequest="50" Source="wordle_logo.png" />
         </Frame>
 
         <Button
@@ -54,9 +51,6 @@
             FontSize="Medium"
             Text="Settings"
             TextColor="{DynamicResource ButtonTextcolor}" />
-
-
-
 
     </Grid>
 

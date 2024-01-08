@@ -14,6 +14,8 @@ public partial class Settings : ContentPage
         InitializeHints();
     }
 
+
+    //Initialize theme picker to current theme
     void InitializeTheme()
     {
         if (Preferences.Default.Get("theme", "light") == "light")
@@ -26,6 +28,7 @@ public partial class Settings : ContentPage
         }
     }
 
+    //Initialize hints switch to current setting
     void InitializeHints()
     {
         if (Preferences.Default.Get("hints", "on") == "on")
@@ -38,6 +41,7 @@ public partial class Settings : ContentPage
         }
     }
 
+    //Change theme based on picker selection
     void OnPickerSelectionChanged(object sender, EventArgs e)
     {
         Picker picker = sender as Picker;
@@ -56,12 +60,14 @@ public partial class Settings : ContentPage
         }
     }
 
+    
     private void Back_Button_Clicked(object sender, EventArgs e)
     {
         //Pop current page off navigation stack
         Navigation.PopAsync();
     }
 
+    //Change hints setting based on switch selection
     private void Switch_Toggled(object sender, ToggledEventArgs e)
     {
         if(e.Value)

@@ -47,7 +47,7 @@
 
 
 
-
+            <!--  Grid to make the guess board  -->
             <Grid
                 x:Name="gameboard"
                 ColumnDefinitions="*,*,*,*,*"
@@ -516,9 +516,9 @@
             <Grid HeightRequest="500" WidthRequest="270">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-
                 </Grid.RowDefinitions>
 
+                <!--  On-screen keyboard  -->
                 <Grid
                     x:Name="CustomKeyboard"
                     Grid.Row="1"
@@ -798,11 +798,9 @@
 
                 </Grid>
             </Grid>
-
-
-
         </VerticalStackLayout>
 
+        <!--  Overlay displayed when finished game, also opens when clicking the gear wheel button  -->
         <Grid
             x:Name="WinOverlay"
             IsVisible="false"
@@ -816,7 +814,6 @@
                 HeightRequest="1000"
                 Opacity="0.6"
                 WidthRequest="2000" />
-
 
             <Frame
                 Grid.Row="0"
@@ -944,8 +941,6 @@
 
                 </VerticalStackLayout>
             </Frame>
-
-
         </Grid>
 
         <!--  Hidden entry, is constantly refocused with a timer function to allow input  -->
@@ -959,8 +954,5 @@
             VerticalOptions="Center"
             WidthRequest="100" />
     </Grid>
-
-
-
 
 </ContentPage>
