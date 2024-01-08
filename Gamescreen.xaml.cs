@@ -14,10 +14,6 @@ using Microsoft.Maui.Storage;
 
 namespace Wordle_FinalProject;
 
-
-
-
-
 public partial class Gamescreen : ContentPage
 {
 
@@ -237,7 +233,7 @@ public partial class Gamescreen : ContentPage
             if (guessCount == 5 && Guess != ChosenWord)
             {
                 await CheckGuess(Guess);
-                GuessFeedbackString = "No more guesses.\n The word was " + chosenWord;
+                GuessFeedbackString = "No more guesses.\nThe word was " + chosenWord;
                 UpdatePlayAgain();
 
                 WinOverlay.IsVisible = true;
@@ -344,8 +340,6 @@ public partial class Gamescreen : ContentPage
         for (int i = 0; i < guess.Length; i++)
         {
             Frame frame = gameboard.Children.OfType<Frame>().Where(child => gameboard.GetRow(child) == guessCount && gameboard.GetColumn(child) == i).FirstOrDefault();
-
-
             // Create a weak reference to the object
             WeakReference weakRef = new WeakReference(frame);
 
@@ -361,31 +355,76 @@ public partial class Gamescreen : ContentPage
 
             string guessChar = guess[i].ToString().ToLower();
 
-            if (guess[i] == ChosenWord[i])
+            //If the character appears twice in the guess but only once in the word
+            if (ContainsDuplicateCharacter(guess, guess[i]) && !ContainsDuplicateCharacter(chosenWord, guess[i]))
             {
-                frame.BackgroundColor = Colors.Green;
-                UpdateKeyboardColor(guessChar, Colors.Green);
+                if (guess[i] != ChosenWord[i])
+                {
+                    if (ChosenWord.Contains(guess[i]) && guess.Substring(0, i).Contains(guess[i]))
+                    {
+                        frame.BackgroundColor = Colors.Yellow;
+                        UpdateKeyboardColor(guessChar, Colors.Yellow);
+                    }
+                    else
+                    {
+                        frame.BackgroundColor = Colors.Grey;
+                        UpdateKeyboardColor(guessChar, Colors.DarkGray);
+                    }
+                }
+                //If the letter is contained in the word but is in the wrong position
+                //Only check if the letter is contained in the word if it is not already green
+                //This is to prevent the frame from turning yellow if the letter is in the correct position
+                //If the letter is contained in the word but appears twice in the guess, only turn the first instance yellow unless the second instance is in the correct position
+                else
+                {
+                    frame.BackgroundColor = Colors.Green;
+                    UpdateKeyboardColor(guessChar, Colors.Green);
 
-            }
-
-            //If the letter is contained in the word but is in the wrong position
-            //Only check if the letter is contained in the word if it is not already green
-            //This is to prevent the frame from turning yellow if the letter is in the correct position
-            //If the letter is contained in the word but appears twice in the guess, only turn the first instance yellow
-            else if (frame.BackgroundColor != Colors.Green && ChosenWord.Contains(guess[i]) && !guess.Substring(0, i).Contains(guess[i]))
-            {
-                frame.BackgroundColor = Colors.Yellow;
-                UpdateKeyboardColor(guessChar, Colors.Yellow);
+                }
             }
             else
             {
-                frame.BackgroundColor = Colors.Grey;
-                UpdateKeyboardColor(guessChar, Colors.DarkGray);
+                if (guess[i] != ChosenWord[i])
+                {
+                    if (ChosenWord.Contains(guess[i]))
+                    {
+                        frame.BackgroundColor = Colors.Yellow;
+                        UpdateKeyboardColor(guessChar, Colors.Yellow);
+                    }
+                    else
+                    {
+                        frame.BackgroundColor = Colors.Grey;
+                        UpdateKeyboardColor(guessChar, Colors.DarkGray);
+                    }
+                }
+                //If the letter is contained in the word but is in the wrong position
+                //Only check if the letter is contained in the word if it is not already green
+                //This is to prevent the frame from turning yellow if the letter is in the correct position
+                //If the letter is contained in the word but appears twice in the guess, only turn the first instance yellow unless the second instance is in the correct position
+                else
+                {
+                    frame.BackgroundColor = Colors.Green;
+                    UpdateKeyboardColor(guessChar, Colors.Green);
+
+                }
             }
 
             
-            
         }
+    }
+
+    public bool ContainsDuplicateCharacter(string s, char c)
+    {
+        bool seenFirst = false;
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] != c)
+                continue;
+            if (seenFirst)
+                return true;
+            seenFirst = true;
+        }
+        return false;
     }
 
     private void UpdateKeyboardColor(string character, Color color)
@@ -526,11 +565,12 @@ public partial class Gamescreen : ContentPage
 
         // Then rotate it back down to its original position over 250ms
         await frame.RotateXTo(0, 250);
+        return;
         #endif
 
 
         //await 200 milliseconds
-        //await Task.Delay(200).ConfigureAwait(false);
+        await Task.Delay(200).ConfigureAwait(false);
         
     }
 
